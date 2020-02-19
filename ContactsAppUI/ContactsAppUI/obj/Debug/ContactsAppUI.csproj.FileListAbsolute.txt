@@ -1,0 +1,8 @@
+D:\RiderProj\ContactsApp\ContactsAppUI\ContactsAppUI\bin\Debug\ContactsAppUI.exe.config
+D:\RiderProj\ContactsApp\ContactsAppUI\ContactsAppUI\bin\Debug\ContactsAppUI.exe
+D:\RiderProj\ContactsApp\ContactsAppUI\ContactsAppUI\bin\Debug\ContactsAppUI.pdb
+D:\RiderProj\ContactsApp\ContactsAppUI\ContactsAppUI\obj\Debug\ContactsAppUI.csprojResolveAssemblyReference.cache
+D:\RiderProj\ContactsApp\ContactsAppUI\ContactsAppUI\obj\Debug\ContactsAppUI.Properties.Resources.resources
+D:\RiderProj\ContactsApp\ContactsAppUI\ContactsAppUI\obj\Debug\ContactsAppUI.csproj.GenerateResource.Cache
+D:\RiderProj\ContactsApp\ContactsAppUI\ContactsAppUI\obj\Debug\ContactsAppUI.exe
+D:\RiderProj\ContactsApp\ContactsAppUI\ContactsAppUI\obj\Debug\ContactsAppUI.pdb
