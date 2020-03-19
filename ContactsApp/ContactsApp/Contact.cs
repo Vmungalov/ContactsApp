@@ -3,9 +3,15 @@ using System.Globalization;
 
 namespace ContactsAppUI.Properties
 {
+    /// <summary>
+    /// Класс "Contact", содержащий в себе информацию о контакте.
+    /// </summary>
     public class Contact : ICloneable
     {
         DateTime DateCheck = new DateTime(1900, 01, 01);
+        /// <summary>
+        /// Поле "Surname", в котором находятся данные о фамилии контакта.
+        /// </summary>
         public string Surname {
             set
             {
@@ -20,7 +26,9 @@ namespace ContactsAppUI.Properties
             }
             get { return Surname; }
         }
-        
+        /// <summary>
+        /// Поле "Name", в котором содержатся данные об имени контакта.
+        /// </summary>
         public string Name {
             set
             {
@@ -36,8 +44,14 @@ namespace ContactsAppUI.Properties
             get { return Name; }
         }
         
+        /// <summary>
+        /// Поле "Email", в котором содержатся данные о почтовом адресе контакта.
+        /// </summary>
         public string Email { get; set; }
-
+        
+        /// <summary>
+        /// Поле "IDvk", в котором содержатся данные о ID вконтакте контакта.
+        /// </summary>
         public string IDvk {
             set
             {
@@ -52,9 +66,14 @@ namespace ContactsAppUI.Properties
             }
             get { return IDvk; }
         }
-
+        /// <summary>
+        /// Поле "Number", в котором содержатся данные о номере телефона контакта.
+        /// </summary>
         public PhoneNumber Number { get; set; }
-
+        
+        /// <summary>
+        /// Поле "Birthday", в котором содержатся данные о дне рождении контакта.
+        /// </summary>
         public DateTime Birthday
         {
             get { return Birthday; }

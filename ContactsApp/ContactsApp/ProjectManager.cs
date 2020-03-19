@@ -4,11 +4,16 @@ using Newtonsoft.Json;
 
 namespace ContactsAppUI.Properties
 {
+    /// <summary>
+    /// Класс "ProjectManager", в котором происходит работа с файлом.
+    /// </summary>
     public class ProjectManager
     {
         private static string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) +
                                      @"\Roaming\ContactsApp.notes";
-        
+        /// <summary>
+        /// Метод "LoadFromFile", осуществляет загрузку контактов из файла.
+        /// </summary>
         public static Project LoadFromFile()
         {
             Project project = null;
@@ -20,7 +25,10 @@ namespace ContactsAppUI.Properties
             }
             return project;
         }
-
+        
+        /// <summary>
+        /// Метод "SaveToFile", осуществляет загрузку контактов в файл.
+        /// </summary>
         public static void SaveToFile(Project project)
         {
             if (!File.Exists(path))

@@ -2,6 +2,9 @@
 
 namespace ContactsAppUI.Properties
 {
+    /// <summary>
+    /// Класс "PhoneNumber", в котором содержатся данные о номере телефона контакта.
+    /// </summary>
     public class PhoneNumber
     {
         private long _Number;
@@ -11,6 +14,9 @@ namespace ContactsAppUI.Properties
             return _Number;
         }
 
+        /// <summary>
+        /// Метод "SetNumber", осуществляет проверку на правильность введённого номера телефона.
+        /// </summary>
         public void SetNumber(long Number)
         {
             if ((Number < 10000000000) || (Number > 79999999999))
