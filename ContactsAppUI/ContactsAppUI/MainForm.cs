@@ -13,10 +13,11 @@ namespace ContactsAppUI
 {
     public partial class MainForm : Form
     {
+        private List<Contact> _contacts = new List<Contact>();
         public MainForm()
         {
             InitializeComponent();
-           // PhoneNumber Xd = new PhoneNumber();
+           // PhoneNumber Test = new PhoneNumber();
            // Contact contact = new Contact();
         }
 
@@ -26,6 +27,16 @@ namespace ContactsAppUI
 
         }
 
-        
+        private void AddContact()
+        {
+            //var addContaсtForm = new ContactForm();
+            addContaсtForm.ShowDialog();
+            var newContact = addContaсtForm.Contact;
+        }
+
+        private void AddContactButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
