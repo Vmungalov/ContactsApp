@@ -19,5 +19,13 @@ namespace ContactsAppUI
            // PhoneNumber Xd = new PhoneNumber();
            // Contact contact = new Contact();
         }
+
+        
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 }
