@@ -23,7 +23,6 @@ C:\Users\VADIM\Source\Repos\ContactsApp\ContactsAppUI\ContactsAppUI\obj\Debug\Co
 C:\Users\VADIM\Source\Repos\ContactsApp\ContactsAppUI\ContactsAppUI\obj\Debug\ContactsAppUI.MainForm.resources
 Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\obj\Debug\ContactsAppUI.csprojAssemblyReference.cache
 Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\obj\Debug\ContactsAppUI.AboutForm.resources
-Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\obj\Debug\ContactsAppUI.AddEditForm.resources
 Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\obj\Debug\ContactsAppUI.MainForm.resources
 Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\obj\Debug\ContactsAppUI.Properties.Resources.resources
 Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\obj\Debug\ContactsAppUI.csproj.GenerateResource.cache
@@ -37,4 +36,3 @@ Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\bin\Debug\Newtonsoft.Json.d
 Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\bin\Debug\ContactsApp.pdb
 Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\bin\Debug\Newtonsoft.Json.xml
 Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\obj\Debug\ContactsAppUI.csproj.CopyComplete
-Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\obj\Debug\ContactsAppUI.MainForm2.resources

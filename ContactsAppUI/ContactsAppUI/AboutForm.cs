@@ -16,7 +16,15 @@ namespace ContactsAppUI
         {
             InitializeComponent();
         }
-
         
+        private void linkLabelMailto_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(Settings.Current.EmailMailto);
+        }
+
+        private void linkLabelGitHub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(Settings.Current.GitHubLink);
+        }
     }
 }

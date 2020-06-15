@@ -18,18 +18,15 @@
         <e p="AboutForm.cs" t="Include" />
         <e p="AboutForm.Designer.cs" t="Include" />
         <e p="AboutForm.resx" t="Include" />
-        <e p="AddEditForm.cs" t="Include" />
-        <e p="AddEditForm.Designer.cs" t="Include" />
-        <e p="AddEditForm.resx" t="Include" />
         <e p="App.config" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="ContactsAppUI.csproj" t="IncludeRecursive" />
+        <e p="EditForm.cs" t="Include" />
+        <e p="EditForm.Designer.cs" t="Include" />
+        <e p="EditForm.resx" t="Include" />
         <e p="MainForm.cs" t="Include" />
         <e p="MainForm.Designer.cs" t="Include" />
         <e p="MainForm.resx" t="Include" />
-        <e p="MainForm2.cs" t="Include" />
-        <e p="MainForm2.Designer.cs" t="Include" />
-        <e p="MainForm2.resx" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="packages.config" t="Include" />
         <e p="Program.cs" t="Include" />
@@ -41,13 +38,11 @@
           <e p="Settings.settings" t="Include" />
         </e>
         <e p="Resources" t="Include">
-          <e p="AddContact.png" t="Include" />
-          <e p="EditContact.png" t="Include" />
           <e p="Pencil.png" t="Include" />
           <e p="Plus.png" t="Include" />
-          <e p="RemoveContact.png" t="Include" />
           <e p="Trash.png" t="Include" />
         </e>
+        <e p="Settings.cs" t="Include" />
       </e>
       <e p="ContactsAppUI.sln" t="IncludeFlat" />
       <e p="packages" t="ExcludeRecursive" />
