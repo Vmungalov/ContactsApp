@@ -30,8 +30,8 @@ namespace ContactsAppUI
         private void AddContact()
         {
             //var addContaсtForm = new ContactForm();
-            addContaсtForm.ShowDialog();
-            var newContact = addContaсtForm.Contact;
+            //addContaсtForm.ShowDialog();
+            //var newContact = addContaсtForm.Contact;
         }
 
         private void AddContactButton_Click(object sender, EventArgs e)
