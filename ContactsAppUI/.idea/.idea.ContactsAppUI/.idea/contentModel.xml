@@ -9,6 +9,7 @@
       <e p="Exceptions" t="Include">
         <e p="ProjectReadingException.cs" t="Include" />
       </e>
+      <e p="FileWorker.cs" t="Include" />
       <e p="Models" t="Include">
         <e p="Contact.cs" t="Include" />
         <e p="PhoneNumber.cs" t="Include" />
