@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ContactsAppUI.Properties
+namespace ContactsApp
 {
     /// <summary>
     /// Класс "Project", в котором содержится список всех контактов.

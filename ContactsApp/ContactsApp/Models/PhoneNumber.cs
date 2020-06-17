@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ContactsAppUI.Properties
+namespace ContactsApp
 {
     /// <summary>
     /// Класс "PhoneNumber", в котором содержатся данные о номере телефона контакта.

@@ -34,9 +34,9 @@
             this.labelEmailTitle = new System.Windows.Forms.Label();
             this.linkLabelMailto = new System.Windows.Forms.LinkLabel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.linkLabelGitHub = new System.Windows.Forms.LinkLabel();
             this.labelAuthorName = new System.Windows.Forms.Label();
             this.labelGitHub = new System.Windows.Forms.Label();
-            this.linkLabelGitHub = new System.Windows.Forms.LinkLabel();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -116,6 +116,18 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(334, 60);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
+            // linkLabelGitHub
+            // 
+            this.linkLabelGitHub.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.linkLabelGitHub.Location = new System.Drawing.Point(69, 42);
+            this.linkLabelGitHub.Name = "linkLabelGitHub";
+            this.linkLabelGitHub.Size = new System.Drawing.Size(260, 15);
+            this.linkLabelGitHub.TabIndex = 7;
+            this.linkLabelGitHub.TabStop = true;
+            this.linkLabelGitHub.Text = "https://github.com/Vmungalov/ContactsApp";
+            this.linkLabelGitHub.LinkClicked +=
+                new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelGitHub_LinkClicked);
+            // 
             // labelAuthorName
             // 
             this.labelAuthorName.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -134,18 +146,6 @@
             this.labelGitHub.Size = new System.Drawing.Size(50, 15);
             this.labelGitHub.TabIndex = 6;
             this.labelGitHub.Text = "GitHub:";
-            // 
-            // linkLabelGitHub
-            // 
-            this.linkLabelGitHub.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.linkLabelGitHub.Location = new System.Drawing.Point(69, 42);
-            this.linkLabelGitHub.Name = "linkLabelGitHub";
-            this.linkLabelGitHub.Size = new System.Drawing.Size(262, 15);
-            this.linkLabelGitHub.TabIndex = 7;
-            this.linkLabelGitHub.TabStop = true;
-            this.linkLabelGitHub.Text = "https://github.com/Vmungalov/ContactsApp";
-            this.linkLabelGitHub.LinkClicked +=
-                new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelGitHub_LinkClicked);
             // 
             // AboutForm
             // 

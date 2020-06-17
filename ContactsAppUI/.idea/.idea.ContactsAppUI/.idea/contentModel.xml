@@ -5,28 +5,39 @@
     <e p="C:\Users\VADIM\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_ContactsAppUI.-792817552.00" t="ExcludeRecursive" />
     <e p="Z:\Projects\ContactsApp2\ContactsApp\ContactsApp" t="IncludeRecursive">
       <e p="bin" t="ExcludeRecursive" />
-      <e p="Contact.cs" t="Include" />
       <e p="ContactsApp.csproj" t="IncludeRecursive" />
+      <e p="Exceptions" t="Include">
+        <e p="ProjectReadingException.cs" t="Include" />
+      </e>
+      <e p="Models" t="Include">
+        <e p="Contact.cs" t="Include" />
+        <e p="PhoneNumber.cs" t="Include" />
+        <e p="ProjectStatus.cs" t="Include" />
+      </e>
       <e p="obj" t="ExcludeRecursive" />
-      <e p="PhoneNumber.cs" t="Include" />
       <e p="Project.cs" t="Include" />
       <e p="ProjectManager.cs" t="Include" />
       <e p="Properties" t="Include" />
+      <e p="Settings" t="Include">
+        <e p="Paths.cs" t="Include" />
+      </e>
     </e>
     <e p="Z:\Projects\ContactsApp2\ContactsAppUI" t="IncludeFlat">
       <e p="ContactsAppUI" t="IncludeRecursive">
-        <e p="AboutForm.cs" t="Include" />
-        <e p="AboutForm.Designer.cs" t="Include" />
-        <e p="AboutForm.resx" t="Include" />
         <e p="App.config" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="ContactsAppUI.csproj" t="IncludeRecursive" />
-        <e p="EditForm.cs" t="Include" />
-        <e p="EditForm.Designer.cs" t="Include" />
-        <e p="EditForm.resx" t="Include" />
-        <e p="MainForm.cs" t="Include" />
-        <e p="MainForm.Designer.cs" t="Include" />
-        <e p="MainForm.resx" t="Include" />
+        <e p="Forms" t="Include">
+          <e p="AboutForm.cs" t="Include" />
+          <e p="AboutForm.Designer.cs" t="Include" />
+          <e p="AboutForm.resx" t="Include" />
+          <e p="EditForm.cs" t="Include" />
+          <e p="EditForm.Designer.cs" t="Include" />
+          <e p="EditForm.resx" t="Include" />
+          <e p="MainForm.cs" t="Include" />
+          <e p="MainForm.Designer.cs" t="Include" />
+          <e p="MainForm.resx" t="Include" />
+        </e>
         <e p="obj" t="ExcludeRecursive" />
         <e p="packages.config" t="Include" />
         <e p="Program.cs" t="Include" />

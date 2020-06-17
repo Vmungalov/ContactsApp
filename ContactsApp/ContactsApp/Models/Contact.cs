@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Globalization;
 
-namespace ContactsAppUI.Properties
+namespace ContactsApp
 {
     /// <summary>
     /// Класс "Contact", содержащий в себе информацию о контакте.
@@ -9,39 +8,46 @@ namespace ContactsAppUI.Properties
     public class Contact : ICloneable
     {
         DateTime DateCheck = new DateTime(1900, 01, 01);
+
+        private string surname = "";
+        private string name = "";
+        private string vkId = "";
+        private DateTime birthday = new DateTime();
+        
         /// <summary>
         /// Поле "Surname", в котором находятся данные о фамилии контакта.
         /// </summary>
         public string Surname {
             set
             {
-                if (Surname.Length > 50)
+                if (value.Length > 50)
                 {
                     throw new ArgumentException("Фамилия не должна превышать 50 символов.");
                 }
                 else
                 {
-                    Surname = value;
+                    surname = value;
                 }
             }
-            get { return Surname; }
+            get => surname;
         }
+        
         /// <summary>
         /// Поле "Name", в котором содержатся данные об имени контакта.
         /// </summary>
         public string Name {
             set
             {
-                if (Name.Length > 50)
+                if (value.Length > 50)
                 {
                     throw new ArgumentException("Имя не должно превышать 50 символов.");
                 }
                 else
                 {
-                    Name = value;
+                    name = value;
                 }
             }
-            get { return Name; }
+            get => name;
         }
         
         /// <summary>
@@ -55,17 +61,18 @@ namespace ContactsAppUI.Properties
         public string IDvk {
             set
             {
-                if (IDvk.Length > 15)
+                if (vkId.Length > 15)
                 {
                     throw new ArgumentException("ID вконтакте не должен превышать 15 символов.");
                 }
                 else
                 {
-                    IDvk = value;
+                    vkId = value;
                 }
             }
-            get { return IDvk; }
+            get => vkId;
         }
+        
         /// <summary>
         /// Поле "Number", в котором содержатся данные о номере телефона контакта.
         /// </summary>
@@ -76,20 +83,20 @@ namespace ContactsAppUI.Properties
         /// </summary>
         public DateTime Birthday
         {
-            get { return Birthday; }
+            get => birthday;
             set
             {
-                if (Birthday > DateTime.Today)
+                if (value > DateTime.Today)
                 {
                     throw new ArgumentException("Дата рождения не может быть больше текущей даты.");
                 }
-                else if (Birthday < DateCheck)
+                else if (value < DateCheck)
                 {
                     throw new ArgumentException("Дата рождения не может быть меньше 1900 года.");
                 }
                 else
                 {
-                    Birthday = value;
+                    value = value;
                 }
             }
         }

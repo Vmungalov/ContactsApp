@@ -224,7 +224,7 @@ namespace ContactsAppUI
             // buttonCancel
             // 
             this.buttonCancel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.buttonCancel.Location = new System.Drawing.Point(341, 191);
+            this.buttonCancel.Location = new System.Drawing.Point(341, 192);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(79, 23);
             this.buttonCancel.TabIndex = 15;
@@ -234,7 +234,7 @@ namespace ContactsAppUI
             // buttonOk
             // 
             this.buttonOk.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.buttonOk.Location = new System.Drawing.Point(256, 191);
+            this.buttonOk.Location = new System.Drawing.Point(255, 192);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(79, 23);
             this.buttonOk.TabIndex = 16;
@@ -245,12 +245,12 @@ namespace ContactsAppUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 221);
+            this.ClientSize = new System.Drawing.Size(434, 222);
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.rightTablePanelLayout);
-            this.MaximumSize = new System.Drawing.Size(1000, 260);
-            this.MinimumSize = new System.Drawing.Size(450, 260);
+            this.MaximumSize = new System.Drawing.Size(999, 261);
+            this.MinimumSize = new System.Drawing.Size(450, 261);
             this.Name = "EditForm";
             this.Text = "Редактирование контакта";
             this.rightTablePanelLayout.ResumeLayout(false);

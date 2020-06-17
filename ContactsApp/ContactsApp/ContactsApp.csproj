@@ -42,10 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contact.cs" />
-    <Compile Include="PhoneNumber.cs" />
+    <Compile Include="Exceptions\ProjectReadingException.cs" />
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\PhoneNumber.cs" />
+    <Compile Include="Models\ProjectStatus.cs" />
     <Compile Include="Project.cs" />
     <Compile Include="ProjectManager.cs" />
+    <Compile Include="Settings\Paths.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

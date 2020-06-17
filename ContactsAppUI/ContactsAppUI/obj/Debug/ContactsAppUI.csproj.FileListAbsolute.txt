@@ -36,3 +36,4 @@ Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\bin\Debug\Newtonsoft.Json.d
 Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\bin\Debug\ContactsApp.pdb
 Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\bin\Debug\Newtonsoft.Json.xml
 Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\obj\Debug\ContactsAppUI.csproj.CopyComplete
+Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\obj\Debug\ContactsAppUI.EditForm.resources
