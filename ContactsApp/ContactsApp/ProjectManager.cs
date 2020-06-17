@@ -32,7 +32,7 @@ namespace ContactsApp
         public static async Task<ProjectStatus> LoadProject()
         {
             ProjectStatus status = new ProjectStatus();
-            ProjectStatus backupStatus = new ProjectStatus();
+            ProjectStatus backupStatus;
             try
             {
                 // Чтение бэкапа, если он существует

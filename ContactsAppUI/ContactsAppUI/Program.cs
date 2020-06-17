@@ -15,13 +15,14 @@ namespace ContactsAppUI
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static async Task Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            string date = JsonConvert.SerializeObject(new DateTime(1900, 01, 01));
-            var check = ContactsApp.ProjectManager.LoadProject().Result;
-            Application.Run(new MainForm());
+            var serialized = JsonConvert.SerializeObject(new DateTime(1999, 6, 16));
+            var deserialized = JsonConvert.DeserializeObject<DateTime>(serialized);
+            var status = await ContactsApp.ProjectManager.LoadProject();
+            Application.Run(new MainForm(status));
         }
     }
 }

@@ -96,7 +96,7 @@ namespace ContactsApp
                 }
                 else
                 {
-                    value = value;
+                    birthday = value;
                 }
             }
         }
