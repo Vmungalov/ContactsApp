@@ -11,25 +11,10 @@ namespace ContactsApp
     public class ProjectManager
     {
         /// <summary>
-        /// Метод "SaveToFile", осуществляет загрузку контактов в файл.
-        /// </summary>
-        private static void SaveToFile(Project project)
-        {
-            if (!File.Exists(Settings.Paths.MainFilePath))
-                using (FileStream fs = File.Create(Settings.Paths.MainFilePath)) { }
-            JsonSerializer serializer = new JsonSerializer();
-            using (StreamWriter sw = new StreamWriter(Settings.Paths.MainFilePath))
-            using (JsonWriter writer = new JsonTextWriter(sw))
-            {
-                serializer.Serialize(writer, project);
-            }
-        }
-
-        /// <summary>
-        /// Метод "LoadProject" пытается асинхронно загрузить список контактов из основного или резервного файла
+        /// Метод "LoadProjectAsync" пытается асинхронно загрузить список контактов из основного или резервного файла
         /// </summary>
         /// <returns>Объект класса ProjectStatus (внутри содержит объект класса Project и статус загрузки)</returns>
-        public static async Task<ProjectStatus> LoadProject()
+        public static async Task<ProjectStatus> LoadProjectAsync()
         {
             ProjectStatus status = new ProjectStatus();
             ProjectStatus backupStatus;
@@ -53,6 +38,17 @@ namespace ContactsApp
             }
 
             return status;
+        }
+
+        /// <summary>
+        /// Метод "SaveProjectAsync" асинхронно записывает список контактов в файл
+        /// </summary>
+        /// <param name="project">Объект класса Project, содержащий список контактов</param>
+        /// <param name="backup">Булевая переменная, значение которой определяет необходимость записать информацию в
+        /// резервный файл. "Истина", если нужно писать бэкап, иначе "ложь"</param>
+        public static async Task SaveProjectAsync(Project project, bool backup)
+        {
+            
         }
 
     }

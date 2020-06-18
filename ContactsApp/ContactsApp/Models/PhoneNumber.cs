@@ -2,16 +2,30 @@
 
 namespace ContactsApp
 {
+    public enum PhoneType
+    {
+        Private,
+        Work,
+        Home,
+        Main
+    }
+    
     /// <summary>
     /// Класс "PhoneNumber", в котором содержатся данные о номере телефона контакта.
     /// </summary>
     public class PhoneNumber
     {
-        private long _Number;
+        private short countryCode;
+        private long federalCode;
+        private long localCode;
+        private long number;
+        
+        public PhoneType Type { get; set; }
 
-        public long GetNumber()
+        public long Number
         {
-            return _Number;
+            get => long.Parse(countryCode.ToString() + federalCode.ToString() + localCode.ToString());
+            set => number = value;
         }
 
         /// <summary>
@@ -29,7 +43,7 @@ namespace ContactsApp
             }
             else
             {
-                _Number = Number;
+                number = Number;
             }
         }
     }

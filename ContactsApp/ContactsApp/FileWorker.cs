@@ -24,9 +24,12 @@ namespace ContactsApp
         {
             ProjectStatus projectStatus = new ProjectStatus();
             // Выбор файла
-            string path = type == FileType.Main ? Paths.MainFilePath : Paths.BackupFilePath;
+            string path = Paths.PathsDictionary[type];
             try
             {
+                // Создание папки проекта в случае её отсутствия
+                // Если она есть, метод ничего не сделает
+                CreateFolder(Paths.AppFolder);
                 // Чтение файла в строку
                 string file = await ReadFile(path);
                 // Десериализация
@@ -43,6 +46,32 @@ namespace ContactsApp
                 throw new ProjectReadingException(ex, "Failed to read contacts file", path);
             }
             return projectStatus;
+        }
+
+        /// <summary>
+        /// Метод "OverwriteProject" переписывает файл со списком контактов
+        /// </summary>
+        /// <param name="project">Объект класса Project</param>
+        /// <param name="type">Тип файла (основной, бэкап и т.д.)</param>
+        /// <returns></returns>
+        internal static async Task OverwriteProject(Project project, FileType type)
+        {
+            // Выбор файла
+            string path = Paths.PathsDictionary[type];
+            try
+            {
+                // Создание папки проекта в случае её отсутствия
+                // Если она есть, метод ничего не сделает
+                CreateFolder(Paths.AppFolder);
+                // Преобразование объекта Project в строку
+                string data = JsonConvert.SerializeObject(project);
+                // Запись файла
+                await OverwriteFile(path, data);
+            }
+            catch (Exception ex)
+            {
+                // Нужно дописать исключения
+            }
         }
 
         /// <summary>
@@ -83,7 +112,6 @@ namespace ContactsApp
         /// <returns>Строка, содержащая весь файл</returns>
         private static async Task<string> ReadFile(string path)
         {
-            CreateFolder(Paths.AppFolder);
             // Открывается поток для чтения файла
             FileStream stream = File.Open(path, FileMode.OpenOrCreate);
             // Создаётся массив байтов для чтения файла
@@ -113,6 +141,22 @@ namespace ContactsApp
         {
             System.IO.Directory.CreateDirectory(path);
             // Дописать исключения на права
+        }
+
+        /// <summary>
+        /// Метод "OverwriteFile" асинхронно переписывает файл
+        /// </summary>
+        /// <param name="path">Путь к файлу</param>
+        /// <param name="data">Строка данных</param>
+        /// <returns></returns>
+        private static async Task OverwriteFile(string path, string data)
+        {
+            // Открытие файла
+            FileStream stream = File.Open(path, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            // Создаётся массив байтов для записи в файл
+            byte[] byteArray = System.Text.Encoding.Default.GetBytes(data);
+            // Асинхронная запись массива байтов в файл
+            await stream.WriteAsync(byteArray, 0, byteArray.Length);
         }
         
         #endregion

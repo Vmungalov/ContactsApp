@@ -11,7 +11,8 @@
     public enum FileType
     {
         Main,
-        Backup
+        Backup,
+        OneContactBackup
     }
     
     public class ProjectStatus
