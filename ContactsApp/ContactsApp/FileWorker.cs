@@ -154,7 +154,7 @@ namespace ContactsApp
             // Открытие файла
             FileStream stream = File.Open(path, FileMode.OpenOrCreate, FileAccess.ReadWrite);
             // Создаётся массив байтов для записи в файл
-            byte[] byteArray = System.Text.Encoding.Default.GetBytes(data);
+            byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(data);
             // Асинхронная запись массива байтов в файл
             await stream.WriteAsync(byteArray, 0, byteArray.Length);
         }
