@@ -12,7 +12,7 @@ namespace ContactsApp
         private string firstName = "";
         private string patronymicName = "";
         private string vkId = "";
-        private DateTime birthday = new DateTime();
+        private DateTime birthday = new DateTime(1900,01,01);
 
         /// <summary>
         /// Поле "Surname", в котором находятся данные о фамилии контакта.
@@ -42,7 +42,7 @@ namespace ContactsApp
         /// <summary>
         /// Поле "Birthday", в котором содержатся данные о дне рождении контакта.
         /// </summary>
-        public DateTime Birthday { get; set; } = new DateTime();
+        public DateTime Birthday { get; set; } = new DateTime(1900,1,1);
 
         public object Clone()
         {

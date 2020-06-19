@@ -204,6 +204,7 @@ namespace ContactsAppUI
                 ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Left |
                                                        System.Windows.Forms.AnchorStyles.Right)));
             this.birthdayDatePicker.Location = new System.Drawing.Point(114, 61);
+            this.birthdayDatePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.birthdayDatePicker.Name = "birthdayDatePicker";
             this.birthdayDatePicker.Size = new System.Drawing.Size(294, 23);
             this.birthdayDatePicker.TabIndex = 5;
