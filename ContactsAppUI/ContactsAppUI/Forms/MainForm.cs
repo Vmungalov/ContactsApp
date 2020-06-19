@@ -9,18 +9,18 @@ namespace ContactsAppUI
 {
     public partial class MainForm : Form
     {
-        private BindingList<Contact> ContactsList;
-        private Project ContactsData;
-        private int SelectedContactIndex = 0;
+        private BindingList<Contact> _contactsList;
+        private Project _contactsData;
+        private int _selectedContactIndex = 0;
         
         public MainForm(ProjectStatus status)
         {
-            ContactsData = status.Project;
-            ContactsList = new BindingList<Contact>(ContactsData.ContactList);
+            _contactsData = status.Project;
+            _contactsList = new BindingList<Contact>(_contactsData.ContactList);
             InitializeComponent();
-            contactsListBox.DataSource = ContactsList;
+            contactsListBox.DataSource = _contactsList;
         }
-        
+
         #region Privates
         
         private void OpenAboutForm()
@@ -74,7 +74,7 @@ namespace ContactsAppUI
             var result = EditContactOnForm();
             var contact = result.Value;
             if (result.Result == DialogResult.OK)
-                ContactsList.Add(contact);
+                _contactsList.Add(contact);
         }
 
         /// <summary>
@@ -82,10 +82,10 @@ namespace ContactsAppUI
         /// </summary>
         private void EditContact()
         {
-            var result = EditContactOnForm(ContactsList[SelectedContactIndex]);
+            var result = EditContactOnForm(_contactsList[_selectedContactIndex]);
             var contact = result.Value;
             if (result.Result == DialogResult.OK)
-                ContactsList[SelectedContactIndex] = contact;
+                _contactsList[_selectedContactIndex] = contact;
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace ContactsAppUI
         /// </summary>
         private void RemoveContact()
         {
-            ContactsList.RemoveAt(SelectedContactIndex);
+            _contactsList.RemoveAt(_selectedContactIndex);
         }
 
         /// <summary>
@@ -101,12 +101,12 @@ namespace ContactsAppUI
         /// </summary>
         private void UpdateRightPanelValues()
         {
-            surnameTextBox.Text = ContactsList[SelectedContactIndex].Surname;
-            nameTextBox.Text = ContactsList[SelectedContactIndex].FirstName;
-            birthdayDatePicker.Value = ContactsList[SelectedContactIndex].Birthday;
-            phoneTextBox.Text = ContactsList[SelectedContactIndex].Number?.NumberString;
-            emailTextBox.Text = ContactsList[SelectedContactIndex].Email;
-            vkTextBox.Text = ContactsList[SelectedContactIndex].IdVk;
+            surnameTextBox.Text = _contactsList[_selectedContactIndex].Surname;
+            nameTextBox.Text = _contactsList[_selectedContactIndex].FirstName;
+            birthdayDatePicker.Value = _contactsList[_selectedContactIndex].Birthday;
+            phoneTextBox.Text = _contactsList[_selectedContactIndex].Number?.NumberString;
+            emailTextBox.Text = _contactsList[_selectedContactIndex].Email;
+            vkTextBox.Text = _contactsList[_selectedContactIndex].IdVk;
         }
         
         #endregion
@@ -130,8 +130,8 @@ namespace ContactsAppUI
         /// <param name="e"></param>
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ContactsData.ContactList = ContactsList.ToList();
-            UiManager.CloseApplication(ContactsData);
+            _contactsData.ContactList = _contactsList.ToList();
+            UiManager.Current.CloseApplication(_contactsData);
         }
         
         /// <summary>
@@ -145,7 +145,7 @@ namespace ContactsAppUI
             int index = s.SelectedIndex;
             // Пользователь может кликнуть по пустой области в ListBox
             // В таком случае SelectedIndex будет равен -1
-            SelectedContactIndex = index >= 0 ? index : SelectedContactIndex;
+            _selectedContactIndex = index >= 0 ? index : _selectedContactIndex;
             UpdateRightPanelValues();
         }
         

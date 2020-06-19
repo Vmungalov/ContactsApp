@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Converters\PhoneNumberStringToLongConverter.cs" />
+    <Compile Include="Exceptions\InsufficientPermissionsException.cs" />
+    <Compile Include="Exceptions\ProjectFileCorruptedException.cs" />
     <Compile Include="Exceptions\ProjectReadingException.cs" />
     <Compile Include="FileWorker.cs" />
     <Compile Include="Models\Contact.cs" />

@@ -18,8 +18,8 @@ namespace ContactsApp
         /// </summary>
         /// <param name="type">Тип файла</param>
         /// <returns>Объект класса ProjectStatus</returns>
-        /// <exception cref="ProjectReadingException">Исключение, возникающее при ошибке чтения или
-        /// десериализации файла контактов.</exception>
+        /// <exception cref="ProjectFileCorruptedException">Возникает, если файл проекта повреждён</exception>
+        /// <exception cref="ProjectReadingException">Возникает при ошибке чтения файла проекта</exception>
         internal static async Task<ProjectStatus> ReadProjectAsync(FileType type)
         {
             ProjectStatus projectStatus = new ProjectStatus();
@@ -37,10 +37,18 @@ namespace ContactsApp
                 // Установка статуса в случае успешного чтения
                 projectStatus.Status = type == FileType.Main ? LoadingStatus.Success : LoadingStatus.Backup;
             }
-            catch (JsonSerializationException ex)
+            // Ошибка десериализации
+            // Возникает, если файл повреждён, неправильно изменён, или если в него был дописан мусор
+            catch (JsonReaderException ex)
             {
-                throw new ProjectReadingException(ex, "Failed to deserialize contacts file", path);
+                throw new ProjectFileCorruptedException(ex, ex.Message, path);
             }
+            // Ошибка ввода/вывода при чтении файла
+            catch (IOException ex)
+            {
+                throw new ProjectReadingException(ex, "An input/output error has occured", path);
+            }
+            // Любые другие ошибки
             catch (Exception ex)
             {
                 throw new ProjectReadingException(ex, "Failed to read contacts file", path);
@@ -101,6 +109,15 @@ namespace ContactsApp
             return File.Exists(Settings.Paths.BackupFilePath);
         }
 
+        /// <summary>
+        /// Метод "OneContactBackupExists" проверяет наличие временного файла одного контакта (редактируемого)
+        /// </summary>
+        /// <returns>"Истина", если файл существует, иначе "ложь"</returns>
+        internal static bool OneContactBackupExists()
+        {
+            return File.Exists(Paths.OneContactBackupFilePath);
+        }
+
         #endregion
         
         #region Privates
@@ -112,25 +129,43 @@ namespace ContactsApp
         /// <returns>Строка, содержащая весь файл</returns>
         private static async Task<string> ReadFile(string path)
         {
-            // Открывается поток для чтения файла
-            FileStream stream = File.Open(path, FileMode.OpenOrCreate);
-            // Создаётся массив байтов для чтения файла
-            byte[] byteArray = new byte[stream.Length];
-            // Читается файл от начала до конца
-            await stream.ReadAsync(byteArray, 0, byteArray.Length);
-            // Запись файла в строку
-            string textString = System.Text.Encoding.UTF8.GetString(byteArray);
-            // Возврат строки
-            return textString;
-        }
-
-        /// <summary>
-        /// Метод "DeleteFile" удаляет файл
-        /// </summary>
-        /// <param name="path">Путь до файла</param>
-        private static void DeleteFile(string path)
-        {
-            File.Delete(path);
+            try
+            {
+                // Открывается поток для чтения файла
+                FileStream stream = File.Open(path, FileMode.OpenOrCreate);
+                // Создаётся массив байтов для чтения файла
+                byte[] byteArray = new byte[stream.Length];
+                // Читается файл от начала до конца
+                await stream.ReadAsync(byteArray, 0, byteArray.Length);
+                // Запись файла в строку
+                string textString = System.Text.Encoding.UTF8.GetString(byteArray);
+                // Закрытие потока
+                stream.Close();
+                // Возврат строки
+                return textString;
+            }
+            // Ошибка, возникающая при отсутствии у пользователя прав доступа на файл
+            catch (UnauthorizedAccessException ex)
+            {
+                throw new InsufficientPermissionsException(ex, "Unable to read file " + path + " due " +
+                                                               "to permissions insufficiency", path);
+            }
+            // Ошибка ввода/вывода
+            catch (IOException ex)
+            {
+                throw new ProjectReadingException(ex, "An I/O error has occured during reading the file", path);
+            }
+            // Ошибка преобразования массива байтов в строку
+            catch (ArgumentException ex)
+            {
+                throw new ProjectFileCorruptedException(ex, "An error has occured during converting bytes " +
+                                                            "array into string. Input file may be corrupted.", path);
+            }
+            // Любая другая ошибка
+            catch (Exception ex)
+            {
+                throw new ProjectReadingException(ex, "An undefined error has occured", path);
+            }
         }
 
         /// <summary>
@@ -139,8 +174,16 @@ namespace ContactsApp
         /// <param name="path">Путь к создаваемой папке</param>
         private static void CreateFolder(string path)
         {
-            System.IO.Directory.CreateDirectory(path);
-            // Дописать исключения на права
+            try
+            {
+                Directory.CreateDirectory(path);
+            }
+            // Ошибка возникает в случае отсутствия прав доступа на запись в %APPDATA%
+            catch (UnauthorizedAccessException ex)
+            {
+                throw new InsufficientPermissionsException(ex, "Unable to create directory " + path + " due " +
+                                                               "to permissions insufficiency", path);
+            }
         }
 
         /// <summary>
@@ -149,14 +192,41 @@ namespace ContactsApp
         /// <param name="path">Путь к файлу</param>
         /// <param name="data">Строка данных</param>
         /// <returns></returns>
+        /// <exception cref="InsufficientPermissionsException">Недостаточно прав для записи файла</exception>
+        /// <exception cref="ProjectReadingException">Ошибка чтения или записи файла</exception>
         private static async Task OverwriteFile(string path, string data)
         {
-            // Открытие файла
-            FileStream stream = File.Open(path, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-            // Создаётся массив байтов для записи в файл
-            byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(data);
-            // Асинхронная запись массива байтов в файл
-            await stream.WriteAsync(byteArray, 0, byteArray.Length);
+            try
+            {
+                // Создание временного файла
+                FileStream stream = File.Open(path + ".temp", FileMode.OpenOrCreate, FileAccess.ReadWrite);
+                // Создаётся массив байтов для записи в файл
+                byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(data);
+                // Асинхронная запись массива байтов в файл
+                await stream.WriteAsync(byteArray, 0, byteArray.Length);
+                // Закрытие потока
+                stream.Close();
+                // Удаление основного файла
+                File.Delete(path);
+                // Подстановка временного файла вместо бывшего основного
+                File.Move(path + ".temp", path);
+            }
+            // Ошибка, возникающая при отсутствии у пользователя прав доступа на файл
+            catch (UnauthorizedAccessException ex)
+            {
+                throw new InsufficientPermissionsException(ex, "Unable to write file " + path + " due " +
+                                                               "to permissions insufficiency", path);
+            }
+            // Ошибка ввода/вывода
+            catch (IOException ex)
+            {
+                throw new ProjectReadingException(ex, "An I/O error has occured during writing the file", path);
+            }
+            // Любая другая ошибка
+            catch (Exception ex)
+            {
+                throw new ProjectReadingException(ex, "An undefined error has occured", path);
+            }
         }
         
         #endregion

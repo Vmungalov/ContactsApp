@@ -12,11 +12,9 @@ namespace ContactsApp.Settings
             {FileType.OneContactBackup, OneContactBackupFilePath}
         };
         
-        public static string AppFolder => Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) +
-                                          @"\ContactsApp";
-        
+        public static string AppData => Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+        public static string AppFolder => AppData + @"\ContactsApp";
         public static string MainFilePath => AppFolder + @"\ContactsApp.notes";
-        
         public static string BackupFilePath => AppFolder + @"\ContactsApp.notes.bak";
         public static string OneContactBackupFilePath => AppFolder + @"\contact_{0}.bak";
     }

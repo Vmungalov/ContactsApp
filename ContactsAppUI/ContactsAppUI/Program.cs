@@ -19,8 +19,7 @@ namespace ContactsAppUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            var status = await ContactsApp.ProjectManager.LoadProjectAsync();
-            Application.Run(new MainForm(status));
+            await UiManager.Current.LaunchUi();
         }
     }
 }

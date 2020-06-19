@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
+using ContactsApp.Exceptions;
 using Newtonsoft.Json;
 
 namespace ContactsApp
@@ -34,9 +35,9 @@ namespace ContactsApp
             }
             catch (Exception ex)
             {
-                // Нужно дописать исключения
+                // Переброс далее
+                throw ex;
             }
-
             return status;
         }
 
@@ -48,10 +49,18 @@ namespace ContactsApp
         /// резервный файл. "Истина", если нужно писать бэкап, иначе "ложь"</param>
         public static async Task SaveProjectAsync(Project project, bool backup)
         {
-            FileType type = backup ? FileType.Backup : FileType.Main;
-            await FileWorker.OverwriteProjectAsync(project, type);
-            if (FileWorker.BackupExists())
-                FileWorker.DeleteBackup();
+            try
+            {
+                FileType type = backup ? FileType.Backup : FileType.Main;
+                await FileWorker.OverwriteProjectAsync(project, type);
+                if (FileWorker.BackupExists())
+                    FileWorker.DeleteBackup();
+            }
+            catch (Exception ex)
+            {
+                // Переброс далее
+                throw ex;
+            }
         }
 
     }
