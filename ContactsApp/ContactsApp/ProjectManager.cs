@@ -23,14 +23,14 @@ namespace ContactsApp
                 // Чтение бэкапа, если он существует
                 if (FileWorker.BackupExists())
                 {
-                    backupStatus = await FileWorker.ReadProject(FileType.Backup);
+                    backupStatus = await FileWorker.ReadProjectAsync(FileType.Backup);
                     status = backupStatus;
                     FileWorker.DeleteBackup();
                     return status;
                 }
                 // Открытие основного файла контактов
                 // Если его нет, он будет автоматически создан
-                status = await FileWorker.ReadProject(FileType.Main);
+                status = await FileWorker.ReadProjectAsync(FileType.Main);
             }
             catch (Exception ex)
             {
@@ -48,7 +48,10 @@ namespace ContactsApp
         /// резервный файл. "Истина", если нужно писать бэкап, иначе "ложь"</param>
         public static async Task SaveProjectAsync(Project project, bool backup)
         {
-            
+            FileType type = backup ? FileType.Backup : FileType.Main;
+            await FileWorker.OverwriteProjectAsync(project, type);
+            if (FileWorker.BackupExists())
+                FileWorker.DeleteBackup();
         }
 
     }

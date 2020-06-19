@@ -19,8 +19,6 @@ namespace ContactsAppUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            var serialized = JsonConvert.SerializeObject(new DateTime(1999, 6, 16));
-            var deserialized = JsonConvert.DeserializeObject<DateTime>(serialized);
             var status = await ContactsApp.ProjectManager.LoadProjectAsync();
             Application.Run(new MainForm(status));
         }

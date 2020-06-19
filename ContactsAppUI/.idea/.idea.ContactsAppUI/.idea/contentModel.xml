@@ -61,6 +61,7 @@
           <e p="Trash.png" t="Include" />
         </e>
         <e p="Settings.cs" t="Include" />
+        <e p="UiManager.cs" t="Include" />
       </e>
       <e p="ContactsAppUI.sln" t="IncludeFlat" />
       <e p="packages" t="ExcludeRecursive" />

@@ -20,7 +20,7 @@ namespace ContactsApp
         /// <returns>Объект класса ProjectStatus</returns>
         /// <exception cref="ProjectReadingException">Исключение, возникающее при ошибке чтения или
         /// десериализации файла контактов.</exception>
-        internal static async Task<ProjectStatus> ReadProject(FileType type)
+        internal static async Task<ProjectStatus> ReadProjectAsync(FileType type)
         {
             ProjectStatus projectStatus = new ProjectStatus();
             // Выбор файла
@@ -49,12 +49,12 @@ namespace ContactsApp
         }
 
         /// <summary>
-        /// Метод "OverwriteProject" переписывает файл со списком контактов
+        /// Метод "OverwriteProjectAsync" переписывает файл со списком контактов
         /// </summary>
         /// <param name="project">Объект класса Project</param>
         /// <param name="type">Тип файла (основной, бэкап и т.д.)</param>
         /// <returns></returns>
-        internal static async Task OverwriteProject(Project project, FileType type)
+        internal static async Task OverwriteProjectAsync(Project project, FileType type)
         {
             // Выбор файла
             string path = Paths.PathsDictionary[type];
