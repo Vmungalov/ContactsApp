@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\PhoneNumberStringToLongConverter.cs" />
     <Compile Include="Exceptions\ProjectReadingException.cs" />
     <Compile Include="FileWorker.cs" />
     <Compile Include="Models\Contact.cs" />
