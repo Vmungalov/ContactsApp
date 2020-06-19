@@ -10,13 +10,23 @@ namespace ContactsAppUI
     public partial class MainForm : Form
     {
         private BindingList<Contact> _contactsList;
-        private Project _contactsData;
         private int _selectedContactIndex = 0;
         
+        private BindingList<Contact> ContactsList
+        {
+            get => _contactsList;
+            set
+            {
+                _contactsList = value;
+                ContactsData.ContactList = value.ToList();
+            }
+        }
+        public Project ContactsData;
+
         public MainForm(ProjectStatus status)
         {
-            _contactsData = status.Project;
-            _contactsList = new BindingList<Contact>(_contactsData.ContactList);
+            ContactsData = status.Project;
+            _contactsList = new BindingList<Contact>(ContactsData.ContactList);
             InitializeComponent();
             contactsListBox.DataSource = _contactsList;
         }
@@ -46,7 +56,7 @@ namespace ContactsAppUI
         {
             // Блокирование формы на время присутствия на экране окна редактирования контакта
             Enabled = false;
-            EditForm editForm = new EditForm(contact);
+            EditForm editForm = new EditForm(contact,_selectedContactIndex);
             DialogReturn<Contact> result = new DialogReturn<Contact>()
             {
                 Result = DialogResult.Cancel
@@ -130,8 +140,8 @@ namespace ContactsAppUI
         /// <param name="e"></param>
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _contactsData.ContactList = _contactsList.ToList();
-            UiManager.Current.CloseApplication(_contactsData);
+            ContactsData.ContactList = _contactsList.ToList();
+            UiManager.Current.CloseApplication(ContactsData);
         }
         
         /// <summary>

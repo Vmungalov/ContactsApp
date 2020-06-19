@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using ContactsApp;
 using ContactsApp.Converters;
 
@@ -11,10 +13,12 @@ namespace ContactsAppUI
         private bool okAllowed = false;
         
         public Contact ContactInfo { get; private set; }
+        public int Index { get; private set; }
         
-        public EditForm(Contact contact = null)
+        public EditForm(Contact contact = null, int index = -1)
         {
             ContactInfo = contact ?? new Contact();
+            Index = index;
             InitializeComponent();
             SetBoxes();
         }
@@ -28,35 +32,41 @@ namespace ContactsAppUI
             emailTextBox.Text = ContactInfo.Email;
             vkTextBox.Text = ContactInfo.IdVk;
         }
+
+        private async Task<bool> ValidateText(TextBoxBase element)
+        {
+            if (element.Text.Length > ContactInfo.MaxLength)
+            {
+                surnameTextBox.ForeColor = Color.Red;
+                return false;
+            }
+            else
+            {
+                surnameTextBox.ForeColor = Color.Black;
+                await BackupContact();
+                return true;
+            }
+        }
+
+        private void SetTextBoxValidated(TextBoxBase textBox)
+        {
+            textBox.ForeColor = Color.Black;
+        }
+        
+        private async Task BackupContact()
+        {
+            ContactBackup backup = new ContactBackup()
+            {
+                Contact = ContactInfo,
+                Index = Index
+            };
+            await ProjectManager.BackupContactAsync(backup);
+        }
         
         #region Events
         
-        private void surnameTextBox_TextChanged(object sender, EventArgs e)
-        {
-            ContactInfo.Surname = (sender as TextBox)?.Text;
-        }
-
-        private void nameTextBox_TextChanged(object sender, EventArgs e)
-        {
-            ContactInfo.FirstName = (sender as TextBox)?.Text;
-        }
-
-        private void birthdayDatePicker_ValueChanged(object sender, EventArgs e)
-        {
-            var val = (sender as DateTimePicker)?.Value;
-            ContactInfo.Birthday = val ?? DateTime.Today;
-        }
-
-        private void emailTextBox_TextChanged(object sender, EventArgs e)
-        {
-            ContactInfo.Email = (sender as TextBox)?.Text;
-        }
-
-        private void vkTextBox_TextChanged(object sender, EventArgs e)
-        {
-            ContactInfo.IdVk = (sender as TextBox)?.Text;
-        }
-
+        // Кнопки
+        
         private void buttonOk_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
@@ -69,6 +79,8 @@ namespace ContactsAppUI
             Close();
         }
 
+        // Поле для ввода телефона
+        
         private void phoneMaskedTextBox_TextChanged(object sender, EventArgs e)
         {
             phoneMaskedTextBox.ForeColor = Color.Black;
@@ -94,6 +106,68 @@ namespace ContactsAppUI
                 phoneMaskedTextBox.ForeColor = Color.Red;
                 okAllowed = false;
             }
+        }
+        
+        // Прочие поля для ввода
+        
+        private void surnameTextBox_Validated(object sender, EventArgs e)
+        {
+            Task.Run(async () =>
+            {
+                string value = (sender as TextBox)?.Text;
+                ContactInfo.Surname = value;
+                bool validated = await ValidateText(sender as TextBox);
+            });
+        }
+
+        private void surnameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            SetTextBoxValidated(sender as TextBox);
+        }
+        
+        private void nameTextBox_Validated(object sender, EventArgs e)
+        {
+            Task.Run(async () =>
+            {
+                string value = (sender as TextBox)?.Text;
+                ContactInfo.FirstName = value;
+                bool validated = await ValidateText(sender as TextBox);
+            });
+        }
+
+        private void nameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            SetTextBoxValidated(sender as TextBox);
+        }
+        
+        private void emailTextBox_Validated(object sender, EventArgs e)
+        {
+            Task.Run(async () =>
+            {
+                string value = (sender as TextBox)?.Text;
+                ContactInfo.Email = value;
+                bool validated = await ValidateText(sender as TextBox);
+            });
+        }
+        
+        private void emailTextBox_TextChanged(object sender, EventArgs e)
+        {
+            SetTextBoxValidated(sender as TextBox);
+        }
+        
+        private void vkTextBox_Validated(object sender, EventArgs e)
+        {
+            Task.Run(async () =>
+            {
+                string value = (sender as TextBox)?.Text;
+                ContactInfo.IdVk = value;
+                bool validated = await ValidateText(sender as TextBox);
+            });
+        }
+
+        private void vkTextBox_TextChanged(object sender, EventArgs e)
+        {
+            SetTextBoxValidated(sender as TextBox);
         }
         
         #endregion

@@ -17,6 +17,7 @@
       <e p="FileWorker.cs" t="Include" />
       <e p="Models" t="Include">
         <e p="Contact.cs" t="Include" />
+        <e p="ContactBackup.cs" t="Include" />
         <e p="PhoneNumber.cs" t="Include" />
         <e p="ProjectStatus.cs" t="Include" />
       </e>

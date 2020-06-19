@@ -43,10 +43,15 @@ namespace ContactsApp
             {
                 throw new ProjectFileCorruptedException(ex, ex.Message, path);
             }
-            // Ошибка ввода/вывода при чтении файла
-            catch (IOException ex)
+            // Недостаточно прав для чтения файла
+            catch (InsufficientPermissionsException ex)
             {
-                throw new ProjectReadingException(ex, "An input/output error has occured", path);
+                throw;
+            }
+            // Ошибка ввода/вывода при чтении файла
+            catch (ProjectReadingException ex)
+            {
+                throw;
             }
             // Любые другие ошибки
             catch (Exception ex)
@@ -59,10 +64,10 @@ namespace ContactsApp
         /// <summary>
         /// Метод "OverwriteProjectAsync" переписывает файл со списком контактов
         /// </summary>
-        /// <param name="project">Объект класса Project</param>
+        /// <param name="project">Объект для сериализации</param>
         /// <param name="type">Тип файла (основной, бэкап и т.д.)</param>
         /// <returns></returns>
-        internal static async Task OverwriteProjectAsync(Project project, FileType type)
+        internal static async Task OverwriteFileAsync(object obj, FileType type)
         {
             // Выбор файла
             string path = Paths.PathsDictionary[type];
@@ -72,13 +77,17 @@ namespace ContactsApp
                 // Если она есть, метод ничего не сделает
                 CreateFolder(Paths.AppFolder);
                 // Преобразование объекта Project в строку
-                string data = JsonConvert.SerializeObject(project);
+                string data = JsonConvert.SerializeObject(obj);
                 // Запись файла
                 await OverwriteFile(path, data);
             }
+            catch (InsufficientPermissionsException ex)
+            {
+                throw;
+            }
             catch (Exception ex)
             {
-                // Нужно дописать исключения
+                throw new ProjectReadingException(ex, "Failed to write contacts file", path);
             }
         }
 

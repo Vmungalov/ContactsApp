@@ -48,6 +48,7 @@
     <Compile Include="Exceptions\ProjectReadingException.cs" />
     <Compile Include="FileWorker.cs" />
     <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\ContactBackup.cs" />
     <Compile Include="Models\PhoneNumber.cs" />
     <Compile Include="Models\ProjectStatus.cs" />
     <Compile Include="Project.cs" />

@@ -101,6 +101,7 @@ namespace ContactsAppUI
             this.surnameTextBox.Size = new System.Drawing.Size(294, 23);
             this.surnameTextBox.TabIndex = 1;
             this.surnameTextBox.TextChanged += new System.EventHandler(this.surnameTextBox_TextChanged);
+            this.surnameTextBox.Validated += new System.EventHandler(this.surnameTextBox_Validated);
             // 
             // vkTextBox
             // 
@@ -113,6 +114,7 @@ namespace ContactsAppUI
             this.vkTextBox.Size = new System.Drawing.Size(294, 23);
             this.vkTextBox.TabIndex = 11;
             this.vkTextBox.TextChanged += new System.EventHandler(this.vkTextBox_TextChanged);
+            this.vkTextBox.Validated += new System.EventHandler(this.vkTextBox_Validated);
             // 
             // vkLabel
             // 
@@ -155,6 +157,7 @@ namespace ContactsAppUI
             this.emailTextBox.Size = new System.Drawing.Size(294, 23);
             this.emailTextBox.TabIndex = 9;
             this.emailTextBox.TextChanged += new System.EventHandler(this.emailTextBox_TextChanged);
+            this.emailTextBox.Validated += new System.EventHandler(this.emailTextBox_Validated);
             // 
             // emailLabel
             // 
@@ -177,6 +180,7 @@ namespace ContactsAppUI
             this.nameTextBox.Size = new System.Drawing.Size(294, 23);
             this.nameTextBox.TabIndex = 2;
             this.nameTextBox.TextChanged += new System.EventHandler(this.nameTextBox_TextChanged);
+            this.nameTextBox.Validated += new System.EventHandler(this.nameTextBox_Validated);
             // 
             // birthdayLabel
             // 
@@ -208,7 +212,6 @@ namespace ContactsAppUI
             this.birthdayDatePicker.Name = "birthdayDatePicker";
             this.birthdayDatePicker.Size = new System.Drawing.Size(294, 23);
             this.birthdayDatePicker.TabIndex = 5;
-            this.birthdayDatePicker.ValueChanged += new System.EventHandler(this.birthdayDatePicker_ValueChanged);
             // 
             // phoneMaskedTextBox
             // 

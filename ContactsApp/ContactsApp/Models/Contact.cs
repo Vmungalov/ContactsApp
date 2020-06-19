@@ -7,12 +7,11 @@ namespace ContactsApp
     /// </summary>
     public class Contact : ICloneable
     {
-        DateTime DateCheck = new DateTime(1900, 01, 01);
-        private short maxLength = 50;
         private string firstName = "";
         private string patronymicName = "";
         private string vkId = "";
         private DateTime birthday = new DateTime(1900,01,01);
+        public short MaxLength = 50;
 
         /// <summary>
         /// Поле "Surname", в котором находятся данные о фамилии контакта.
