@@ -7,7 +7,7 @@
       <e p="bin" t="ExcludeRecursive" />
       <e p="ContactsApp.csproj" t="IncludeRecursive" />
       <e p="Converters" t="Include">
-        <e p="PhoneNumberStringToLongConverter.cs" t="Include" />
+        <e p="PhoneNumberConverter.cs" t="Include" />
       </e>
       <e p="Exceptions" t="Include">
         <e p="InsufficientPermissionsException.cs" t="Include" />
@@ -59,6 +59,7 @@
           <e p="Settings.settings" t="Include" />
         </e>
         <e p="Resources" t="Include">
+          <e p="Alert.png" t="Include" />
           <e p="Pencil.png" t="Include" />
           <e p="Plus.png" t="Include" />
           <e p="Trash.png" t="Include" />

@@ -15,10 +15,7 @@ namespace ContactsApp
     /// </summary>
     public class PhoneNumber
     {
-        private long number;
-        private string numberString;
-        
-        public PhoneType Type { get; set; }
+        public PhoneType Type { get; set; } = PhoneType.Private;
 
         /// <summary>
         /// Число, содержащее в себе номер телефона.
@@ -26,33 +23,19 @@ namespace ContactsApp
         /// Номер телефона должен иметь 11 цифр и начинаться с 7.
         /// </summary>
         /// <exception cref="ArgumentException">Исключение, бросаемое при числа, не подходящего под ограничения</exception>
-        public long Number
-        {
-            get => number;
-            set
-            {
-                // Проверка на количество цифр
-                if (Digits(value) < 11)
-                    throw new ArgumentException("Not enough digits in phone number");
-                // Проверка на код страны +7
-                if (GetDigit(value,1) != 7)
-                    throw new ArgumentException("Country code must start with 7");
-                number = value;
-            }
-        }
+        public long Number { get; set; }
 
-        /// <summary>
-        /// Строковое представление номера телефона.
-        /// Используется для упрощения вывода его в GUI в легкочитаемой форме.
-        /// </summary>
-        public string NumberString
+        public bool SetNumber(string num)
         {
-            get => numberString;
-            set
-            {
-                Number = Converters.PhoneNumberStringToLongConverter.ConvertPhoneToLong(value);
-                numberString = value;
-            }
+            long value = Converters.PhoneNumberConverter.ConvertPhoneToLong(num);
+            // Проверка на количество цифр
+            if (Digits(value) < 11)
+                throw new ArgumentException("Недостаточно цифр в номере телефона");
+            // Проверка на код страны +7
+            if (GetDigit(value,1) != 7)
+                throw new ArgumentException("Код страны должен начинаться с 7");
+            Number = value;
+            return true;
         }
 
         /// <summary>

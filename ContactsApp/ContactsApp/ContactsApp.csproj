@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Converters\PhoneNumberStringToLongConverter.cs" />
+    <Compile Include="Converters\PhoneNumberConverter.cs" />
     <Compile Include="Exceptions\InsufficientPermissionsException.cs" />
     <Compile Include="Exceptions\ProjectFileCorruptedException.cs" />
     <Compile Include="Exceptions\ProjectReadingException.cs" />

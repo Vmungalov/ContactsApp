@@ -114,7 +114,8 @@ namespace ContactsAppUI
             surnameTextBox.Text = _contactsList[_selectedContactIndex].Surname;
             nameTextBox.Text = _contactsList[_selectedContactIndex].FirstName;
             birthdayDatePicker.Value = _contactsList[_selectedContactIndex].Birthday;
-            phoneTextBox.Text = _contactsList[_selectedContactIndex].Number?.NumberString;
+            phoneTextBox.Text = ContactsApp.Converters.PhoneNumberConverter.
+                ConvertPhoneToString(_contactsList[_selectedContactIndex].Number.Number);
             emailTextBox.Text = _contactsList[_selectedContactIndex].Email;
             vkTextBox.Text = _contactsList[_selectedContactIndex].IdVk;
         }

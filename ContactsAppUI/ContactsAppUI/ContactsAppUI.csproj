@@ -112,6 +112,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Alert.png" />
     <Content Include="Resources\Pencil.png" />
     <Content Include="Resources\Plus.png" />
     <Content Include="Resources\Trash.png" />
