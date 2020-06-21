@@ -11,6 +11,19 @@ namespace ContactsAppUI
     {
         private BindingList<Contact> _contactsList;
         private int _selectedContactIndex = 0;
+        private string _substring;
+
+        private string Substring
+        {
+            get => _substring;
+            set
+            {
+                _substring = value;
+                ContactsList = new BindingList<Contact>(ContactsData.ContactList.Where(i => 
+                    i.Surname.StartsWith(_substring ?? "")).ToList());
+                contactsListBox.DataSource = ContactsList;
+            }
+        }
         
         private BindingList<Contact> ContactsList
         {
@@ -18,7 +31,6 @@ namespace ContactsAppUI
             set
             {
                 _contactsList = value;
-                ContactsData.ContactList = value.ToList();
             }
         }
         public Project ContactsData;
@@ -218,6 +230,12 @@ namespace ContactsAppUI
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             RemoveContact();
+        }
+        
+        private void searchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            var substr = ((TextBox) sender).Text;
+            Substring = substr;
         }
         
         #endregion
