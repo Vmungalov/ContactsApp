@@ -57,12 +57,18 @@ namespace ContactsAppUI
             this.vkTextBox = new System.Windows.Forms.TextBox();
             this.vkLabel = new System.Windows.Forms.Label();
             this.panelRight = new System.Windows.Forms.Panel();
+            this.birthsPanel = new System.Windows.Forms.Panel();
+            this.infoPictureBox = new System.Windows.Forms.PictureBox();
             this.rightTablePanelLayout = new System.Windows.Forms.TableLayoutPanel();
             this.birthdayTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.contactsListBox = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.birthsLabel = new System.Windows.Forms.Label();
             this.menuStrip.SuspendLayout();
+            this.panelRight.SuspendLayout();
+            this.birthsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize) (this.infoPictureBox)).BeginInit();
             this.rightTablePanelLayout.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -101,7 +107,7 @@ namespace ContactsAppUI
             this.buttonDelete.MinimumSize = new System.Drawing.Size(31, 32);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(31, 32);
-            this.buttonDelete.TabIndex = 8;
+            this.buttonDelete.TabIndex = 5;
             this.buttonDelete.UseVisualStyleBackColor = true;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
@@ -118,7 +124,7 @@ namespace ContactsAppUI
             this.buttonEdit.MinimumSize = new System.Drawing.Size(31, 32);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(31, 32);
-            this.buttonEdit.TabIndex = 7;
+            this.buttonEdit.TabIndex = 4;
             this.buttonEdit.UseVisualStyleBackColor = true;
             this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
@@ -135,7 +141,7 @@ namespace ContactsAppUI
             this.buttonAdd.MinimumSize = new System.Drawing.Size(31, 32);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(31, 32);
-            this.buttonAdd.TabIndex = 6;
+            this.buttonAdd.TabIndex = 3;
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
@@ -274,7 +280,7 @@ namespace ContactsAppUI
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.ReadOnly = true;
             this.phoneTextBox.Size = new System.Drawing.Size(276, 23);
-            this.phoneTextBox.TabIndex = 7;
+            this.phoneTextBox.TabIndex = 4;
             // 
             // phoneLabel
             // 
@@ -296,7 +302,7 @@ namespace ContactsAppUI
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.ReadOnly = true;
             this.emailTextBox.Size = new System.Drawing.Size(276, 23);
-            this.emailTextBox.TabIndex = 9;
+            this.emailTextBox.TabIndex = 5;
             // 
             // emailLabel
             // 
@@ -318,7 +324,7 @@ namespace ContactsAppUI
             this.vkTextBox.Name = "vkTextBox";
             this.vkTextBox.ReadOnly = true;
             this.vkTextBox.Size = new System.Drawing.Size(276, 23);
-            this.vkTextBox.TabIndex = 11;
+            this.vkTextBox.TabIndex = 6;
             // 
             // vkLabel
             // 
@@ -338,10 +344,36 @@ namespace ContactsAppUI
                                                         System.Windows.Forms.AnchorStyles.Left) |
                                                        System.Windows.Forms.AnchorStyles.Right)));
             this.panelRight.BackColor = System.Drawing.SystemColors.Control;
+            this.panelRight.Controls.Add(this.birthsPanel);
             this.panelRight.Location = new System.Drawing.Point(248, 32);
             this.panelRight.Name = "panelRight";
             this.panelRight.Size = new System.Drawing.Size(393, 511);
             this.panelRight.TabIndex = 2;
+            // 
+            // birthsPanel
+            // 
+            this.birthsPanel.Controls.Add(this.birthsLabel);
+            this.birthsPanel.Controls.Add(this.infoPictureBox);
+            this.birthsPanel.Location = new System.Drawing.Point(3, 430);
+            this.birthsPanel.Name = "birthsPanel";
+            this.birthsPanel.Size = new System.Drawing.Size(387, 76);
+            this.birthsPanel.TabIndex = 7;
+            this.birthsPanel.Visible = false;
+            // 
+            // infoPictureBox
+            // 
+            this.infoPictureBox.Anchor =
+                ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top |
+                                                        System.Windows.Forms.AnchorStyles.Bottom) |
+                                                       System.Windows.Forms.AnchorStyles.Left)));
+            this.infoPictureBox.BackgroundImage = global::ContactsAppUI.Properties.Resources
+                .pict__information_icon_window_elements___vector_stencils_library;
+            this.infoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.infoPictureBox.Location = new System.Drawing.Point(3, 3);
+            this.infoPictureBox.Name = "infoPictureBox";
+            this.infoPictureBox.Size = new System.Drawing.Size(70, 70);
+            this.infoPictureBox.TabIndex = 0;
+            this.infoPictureBox.TabStop = false;
             // 
             // rightTablePanelLayout
             // 
@@ -423,7 +455,7 @@ namespace ContactsAppUI
             this.tableLayoutPanel1.RowStyles.Add(
                 new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(230, 511);
-            this.tableLayoutPanel1.TabIndex = 14;
+            this.tableLayoutPanel1.TabIndex = 1;
             // 
             // contactsListBox
             // 
@@ -439,6 +471,7 @@ namespace ContactsAppUI
             this.contactsListBox.TabIndex = 2;
             this.contactsListBox.SelectedValueChanged +=
                 new System.EventHandler(this.contactsListBox_SelectedValueChanged);
+            this.contactsListBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.contactsListBox_KeyUp);
             // 
             // panel1
             // 
@@ -455,6 +488,19 @@ namespace ContactsAppUI
             this.panel1.Size = new System.Drawing.Size(230, 38);
             this.panel1.TabIndex = 3;
             // 
+            // birthsLabel
+            // 
+            this.birthsLabel.Anchor =
+                ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top |
+                                                        System.Windows.Forms.AnchorStyles.Bottom) |
+                                                       System.Windows.Forms.AnchorStyles.Left)));
+            this.birthsLabel.Location = new System.Drawing.Point(79, 3);
+            this.birthsLabel.MaximumSize = new System.Drawing.Size(305, 70);
+            this.birthsLabel.Name = "birthsLabel";
+            this.birthsLabel.Size = new System.Drawing.Size(305, 70);
+            this.birthsLabel.TabIndex = 1;
+            this.birthsLabel.Text = "Сегодня празднуют день рождения ";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -470,6 +516,9 @@ namespace ContactsAppUI
             this.Text = "Контакты";
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            this.panelRight.ResumeLayout(false);
+            this.birthsPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize) (this.infoPictureBox)).EndInit();
             this.rightTablePanelLayout.ResumeLayout(false);
             this.rightTablePanelLayout.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -512,5 +561,8 @@ namespace ContactsAppUI
         private System.Windows.Forms.ToolStripMenuItem editContactToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteContactToolStripMenuItem;
         private System.Windows.Forms.TextBox birthdayTextBox;
+        private System.Windows.Forms.PictureBox infoPictureBox;
+        private System.Windows.Forms.Panel birthsPanel;
+        private System.Windows.Forms.Label birthsLabel;
     }
 }

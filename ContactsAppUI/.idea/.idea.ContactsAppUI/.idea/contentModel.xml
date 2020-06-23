@@ -60,6 +60,7 @@
         </e>
         <e p="Resources" t="Include">
           <e p="Alert.png" t="Include" />
+          <e p="Info.png" t="Include" />
           <e p="Pencil.png" t="Include" />
           <e p="Plus.png" t="Include" />
           <e p="Trash.png" t="Include" />

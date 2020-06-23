@@ -19,7 +19,7 @@ namespace ContactsAppUI
             {
                 var status = await ProjectManager.LoadProjectAsync();
                 var mainForm = new MainForm(status);
-                Application.Run(new MainForm(status));
+                Application.Run(mainForm);
             }
             catch (ProjectFileCorruptedException ex)
             {

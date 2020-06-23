@@ -53,10 +53,13 @@ namespace ContactsAppUI
         {
             InitializeComponent();
             Project = status.Project;
-            ShownContacts = new BindingList<Contact>(Project.ContactList);
+            ShownContacts = new BindingList<Contact>(Project.GetSortedContactsList());
             contactsListBox.DataSource = ShownContacts;
+            SetBirthdays();
             Closing += mainForm_Closing;
         }
+        
+        #region Privates
         
         /// <summary>
         /// Метод "UpdateRightPanelValues" обновляет значения в правой панели
@@ -104,8 +107,7 @@ namespace ContactsAppUI
         private void UpdateShownContacts()
         {
             // Выделение списка контактов, начинающихся со введённой пользователем подстроки
-            var selected = Project.ContactList.Where(i =>
-                i.Surname.StartsWith(Substring)).ToList();
+            var selected = Project.GetSortedContactsList(Substring).ToList();
             // Формирование списка
             ShownContacts = new BindingList<Contact>(selected);
             // Новая привязка
@@ -223,6 +225,40 @@ namespace ContactsAppUI
                 SelectedContactIndex--;
             UpdateShownContacts();
         }
+
+        /// <summary>
+        /// Метод "SetBirthdays" отображает в правой панели список тех, у кого сегодня день рождения.
+        /// </summary>
+        private void SetBirthdays()
+        {
+            // Формирование списка именинников
+            List<string> birthdaysSurnames = Project.
+                GetContactsByBirthday(DateTime.Today).
+                Select(i => i.Surname).
+                ToList();
+            if (birthdaysSurnames.Count > 0)
+            {
+                int count = birthdaysSurnames.Count;
+                for (int i = 0; i < count - 1; i++)
+                    birthsLabel.Text += birthdaysSurnames[i] + ", ";
+                birthsLabel.Text += birthdaysSurnames[count - 1] + ".";
+                birthsPanel.Visible = true;
+            }
+        }
+        
+        /// <summary>
+        /// Метод "AskForRemoval" вызывает диалоговое окно с предложением подтвердить удаление выбранного контакта
+        /// </summary>
+        private void AskForRemoval()
+        {
+            var contact = ShownContacts[SelectedContactIndex];
+            var mBoxResult = MessageBox.Show("Удалить контакт " + contact.FirstName + " " + contact.Surname + "?",
+                contact.Surname, MessageBoxButtons.YesNo);
+            if (mBoxResult == DialogResult.Yes)
+                RemoveContact();
+        }
+        
+        #endregion
         
         #region Events
         
@@ -334,6 +370,19 @@ namespace ContactsAppUI
             UiManager.Current.CloseApplication(Project);
         }
         
+        /// <summary>
+        /// Событие отпускания клавиши "Delete", когда список контактов в фокесу
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void contactsListBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                AskForRemoval();
+            }
+        }
         #endregion
+
     }
 }
