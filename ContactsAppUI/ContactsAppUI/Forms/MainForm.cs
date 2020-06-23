@@ -312,7 +312,7 @@ namespace ContactsAppUI
         /// <param name="e"></param>
         private void deleteContactToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RemoveContact();
+            AskForRemoval();
         }
 
         /// <summary>
@@ -342,7 +342,7 @@ namespace ContactsAppUI
         /// <param name="e"></param>
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            RemoveContact();
+            AskForRemoval();
         }
         
         /// <summary>
