@@ -33,7 +33,7 @@ namespace ContactsApp
                 // Чтение файла в строку
                 string file = await ReadFile(path);
                 // Десериализация
-                projectStatus.Project = JsonConvert.DeserializeObject<Project>(file);
+                projectStatus.Project = JsonConvert.DeserializeObject<Project>(file) ?? new Project();
                 // Установка статуса в случае успешного чтения
                 projectStatus.Status = type == FileType.Main ? LoadingStatus.Success : LoadingStatus.Backup;
             }
