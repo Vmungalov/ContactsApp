@@ -58,10 +58,10 @@ namespace ContactsAppUI
             this.vkLabel = new System.Windows.Forms.Label();
             this.panelRight = new System.Windows.Forms.Panel();
             this.rightTablePanelLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.birthdayTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.contactsListBox = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.birthdayTextBox = new System.Windows.Forms.TextBox();
             this.menuStrip.SuspendLayout();
             this.rightTablePanelLayout.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -150,9 +150,8 @@ namespace ContactsAppUI
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Выход";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // editMenuStrip
             // 
@@ -387,6 +386,18 @@ namespace ContactsAppUI
             this.rightTablePanelLayout.Size = new System.Drawing.Size(393, 174);
             this.rightTablePanelLayout.TabIndex = 13;
             // 
+            // birthdayTextBox
+            // 
+            this.birthdayTextBox.Anchor =
+                ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Left |
+                                                       System.Windows.Forms.AnchorStyles.Right)));
+            this.birthdayTextBox.Location = new System.Drawing.Point(114, 61);
+            this.birthdayTextBox.MaxLength = 50;
+            this.birthdayTextBox.Name = "birthdayTextBox";
+            this.birthdayTextBox.ReadOnly = true;
+            this.birthdayTextBox.Size = new System.Drawing.Size(276, 23);
+            this.birthdayTextBox.TabIndex = 3;
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.Anchor =
@@ -443,18 +454,6 @@ namespace ContactsAppUI
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(230, 38);
             this.panel1.TabIndex = 3;
-            // 
-            // birthdayTextBox
-            // 
-            this.birthdayTextBox.Anchor =
-                ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Left |
-                                                       System.Windows.Forms.AnchorStyles.Right)));
-            this.birthdayTextBox.Location = new System.Drawing.Point(114, 61);
-            this.birthdayTextBox.MaxLength = 50;
-            this.birthdayTextBox.Name = "birthdayTextBox";
-            this.birthdayTextBox.ReadOnly = true;
-            this.birthdayTextBox.Size = new System.Drawing.Size(276, 23);
-            this.birthdayTextBox.TabIndex = 3;
             // 
             // MainForm
             // 

@@ -19,6 +19,7 @@ namespace ContactsAppUI
             get => _shownContacts;
             set => _shownContacts = value;
         }
+        
         private int SelectedContactIndex
         {
             get => _selectedContactIndex;
@@ -41,6 +42,7 @@ namespace ContactsAppUI
             set
             {
                 _substring = value;
+                // Обновление отображаемых контактов
                 UpdateShownContacts();
             }
         }
@@ -53,6 +55,7 @@ namespace ContactsAppUI
             Project = status.Project;
             ShownContacts = new BindingList<Contact>(Project.ContactList);
             contactsListBox.DataSource = ShownContacts;
+            Closing += mainForm_Closing;
         }
         
         /// <summary>
@@ -160,6 +163,9 @@ namespace ContactsAppUI
             return result;
         }
         
+        /// <summary>
+        /// Метод "OpenAboutForm" открывает окно "О программе"
+        /// </summary>
         private void OpenAboutForm()
         {
             // Блокирование формы на время присутствия на экране окна "О программе"
@@ -230,16 +236,6 @@ namespace ContactsAppUI
             OpenAboutForm();
         }
 
-        /// <summary>
-        /// Событие нажатия на кнопку выхода
-        /// </summary>
-        /// <param name="sender">ToolStripMenuItem</param>
-        /// <param name="e"></param>
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            UiManager.Current.CloseApplication(Project);
-        }
-        
         /// <summary>
         /// Событие выбора контакта в списке контактов
         /// </summary>
@@ -313,10 +309,29 @@ namespace ContactsAppUI
             RemoveContact();
         }
         
+        /// <summary>
+        /// Событие ввода текста в поисковую строку
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void searchTextBox_TextChanged(object sender, EventArgs e)
         {
             var substr = ((TextBox)sender).Text;
             Substring = substr;
+        }
+
+        /// <summary>
+        /// Событие закрытия формы.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mainForm_Closing(object sender, EventArgs e)
+        {
+            // Отписка данного метода от события Closing формы
+            // Это необходимо для того, чтобы событие OnClosing не случилось дважды.
+            Closing -= mainForm_Closing;
+            // Метод CloseApplication сохранит контакты и закроет приложение.
+            UiManager.Current.CloseApplication(Project);
         }
         
         #endregion
