@@ -19,7 +19,7 @@ namespace ContactsApp
         /// <returns>"Истина", если значение корректно, иначе "ложь"</returns>
         private bool TextIsValid(string value)
         {
-            return !string.IsNullOrEmpty(value) && value.Length <= MaxLength;
+            return value != null && value.Length <= MaxLength;
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace ContactsApp
         /// <returns>"Истина", если значение корректно, иначе "ложь"</returns>
         private bool DateIsValid(DateTime date)
         {
-            return date > _minDate && date <= DateTime.Now;
+            return date >= _minDate && date <= DateTime.Now;
         }
 
         /// <summary>
@@ -64,15 +64,7 @@ namespace ContactsApp
         public DateTime Birthday
         {
             get => _birthday;
-            set
-            {
-                if (DateIsValid(value))
-                    _birthday = value;
-                else
-                {
-                    throw new ArgumentException("Введеная неправильная дата рождения.");
-                }
-            }
+            set => _birthday = value;
         }
 
         public bool SetSurname(string value)

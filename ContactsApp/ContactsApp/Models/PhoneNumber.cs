@@ -39,6 +39,20 @@ namespace ContactsApp
         }
 
         /// <summary>
+        /// Метод "NumberIsValid" проверяет введённый номер на корректность.
+        /// Более мягкий вариант проверки: значение не присваивается, а исключения не выбрасываются.
+        /// </summary>
+        /// <param name="num">Строковое представление номера телефона</param>
+        /// <returns>"Истина", если номер корректен, иначе "ложь".</returns>
+        public bool NumberIsValid(string num)
+        {
+            long value = Converters.PhoneNumberConverter.ConvertPhoneToLong(num);
+            if (Digits(value) < 11 || GetDigit(value, 1) != 7)
+                return false;
+            return true;
+        }
+
+        /// <summary>
         /// Метод "Digits" вычисляет количество цифр в числе логарифмическим способом.
         /// Требуется, чтобы вводимое число было больше нуля.
         /// </summary>

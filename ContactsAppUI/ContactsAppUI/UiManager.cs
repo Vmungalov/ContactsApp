@@ -75,6 +75,11 @@ namespace ContactsAppUI
             CloseApplication(null, false);
         }
 
+        /// <summary>
+        /// Метод "CloseApplication" сохраняет данные и закрывает приложение
+        /// </summary>
+        /// <param name="project">Объект Project для сохранения</param>
+        /// <param name="save">"Истина", если необходимо сохранить данные (по умолчанию).</param>
         public void CloseApplication(Project project, bool save = true)
         {
             if (save)
@@ -82,8 +87,12 @@ namespace ContactsAppUI
             Application.Exit();
         }
 
+        #region Singleton
+        
         private static readonly Lazy<UiManager> _current = new Lazy<UiManager>(() => new UiManager());
         
         public static UiManager Current => _current.Value;
+        
+        #endregion
     }
 }

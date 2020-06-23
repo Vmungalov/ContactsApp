@@ -23,6 +23,7 @@ namespace ContactsAppUI
             Index = index;
             InitializeComponent();
             SetBoxes();
+            CheckRequiredFields();
         }
 
         /// <summary>
@@ -75,7 +76,7 @@ namespace ContactsAppUI
                 // Вернуть изначальный цвет текста
                 element.ResetForeColor();
             }
-
+            CheckRequiredFields();
             return validated;
         }
 
@@ -125,10 +126,10 @@ namespace ContactsAppUI
         /// Метод "ShowError" показывает ошибку при заполнении форм
         /// </summary>
         /// <param name="message">Сообщение об ошибке</param>
-        private void AddError(int errorNum, string message)
+        private void AddError(int errorNumber, string message)
         {
-            if (!Errors.ContainsKey(errorNum))
-                Errors.Add(errorNum, message);
+            if (!Errors.ContainsKey(errorNumber))
+                Errors.Add(errorNumber, message);
             errorLabel.Text = message;
             errorLabel.Visible = true;
             buttonOk.Enabled = false;
@@ -154,6 +155,10 @@ namespace ContactsAppUI
             }
         }
 
+        /// <summary>
+        /// Метод "BackupContact" асинхронно сохраняет резервную копию контакта
+        /// </summary>
+        /// <returns></returns>
         private async Task BackupContact()
         {
             ContactBackup backup = new ContactBackup()
@@ -162,6 +167,32 @@ namespace ContactsAppUI
                 Index = Index
             };
             await ProjectManager.BackupContactAsync(backup);
+        }
+
+        /// <summary>
+        /// Метод "CheckRequiredFields" проверяет заполненность обязательных полей и выводит ошибку, если они
+        /// не заполнены.
+        /// </summary>
+        private void CheckRequiredFields()
+        {
+            if (RequiredFieldsAreEmpty())
+                AddError(7, "Не все обязательные поля заполнены.");
+            else
+                PopError(7);
+        }
+
+        /// <summary>
+        /// Метод "RequiredFieldsAreEmpty" проверяет, пусты или заполнены все необходимые поля
+        /// </summary>
+        /// <returns>"Истина", если поля фамилии, имени, номера телефона и e-mail заполнены.
+        /// Иначе "ложь".</returns>
+        private bool RequiredFieldsAreEmpty()
+        {
+            return (string.IsNullOrEmpty(surnameTextBox.Text) ||
+                    string.IsNullOrEmpty(nameTextBox.Text) ||
+                    string.IsNullOrEmpty(emailTextBox.Text) ||
+                    !ContactInfo.Number.NumberIsValid(phoneMaskedTextBox.Text) ||
+                    string.IsNullOrEmpty(vkTextBox.Text));
         }
         
         #region Events

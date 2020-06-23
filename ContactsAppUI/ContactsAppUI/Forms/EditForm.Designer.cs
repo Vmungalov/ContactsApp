@@ -114,7 +114,7 @@ namespace ContactsAppUI
             this.vkTextBox.MaxLength = 255;
             this.vkTextBox.Name = "vkTextBox";
             this.vkTextBox.Size = new System.Drawing.Size(315, 23);
-            this.vkTextBox.TabIndex = 11;
+            this.vkTextBox.TabIndex = 6;
             this.vkTextBox.TextChanged += new System.EventHandler(this.vkTextBox_TextChanged);
             this.vkTextBox.Validated += new System.EventHandler(this.vkTextBox_Validated);
             // 
@@ -163,7 +163,7 @@ namespace ContactsAppUI
             this.emailTextBox.MaxLength = 255;
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(315, 23);
-            this.emailTextBox.TabIndex = 9;
+            this.emailTextBox.TabIndex = 5;
             this.emailTextBox.TextChanged += new System.EventHandler(this.emailTextBox_TextChanged);
             this.emailTextBox.Validated += new System.EventHandler(this.emailTextBox_Validated);
             // 
@@ -225,7 +225,7 @@ namespace ContactsAppUI
             this.birthdayDatePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.birthdayDatePicker.Name = "birthdayDatePicker";
             this.birthdayDatePicker.Size = new System.Drawing.Size(315, 23);
-            this.birthdayDatePicker.TabIndex = 5;
+            this.birthdayDatePicker.TabIndex = 3;
             this.birthdayDatePicker.ValueChanged += new System.EventHandler(this.birthdayDatePicker_ValueChanged);
             this.birthdayDatePicker.Validated += new System.EventHandler(this.birthdayDatePicker_Validated);
             // 
@@ -239,7 +239,7 @@ namespace ContactsAppUI
             this.phoneMaskedTextBox.Mask = "+7 (000) 000-0000";
             this.phoneMaskedTextBox.Name = "phoneMaskedTextBox";
             this.phoneMaskedTextBox.Size = new System.Drawing.Size(315, 23);
-            this.phoneMaskedTextBox.TabIndex = 13;
+            this.phoneMaskedTextBox.TabIndex = 4;
             this.phoneMaskedTextBox.TextChanged += new System.EventHandler(this.phoneMaskedTextBox_TextChanged);
             this.phoneMaskedTextBox.Validated += new System.EventHandler(this.phoneMaskedTextBox_Validated);
             // 
@@ -249,7 +249,7 @@ namespace ContactsAppUI
             this.buttonCancel.Location = new System.Drawing.Point(393, 189);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(79, 28);
-            this.buttonCancel.TabIndex = 15;
+            this.buttonCancel.TabIndex = 8;
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
@@ -260,7 +260,7 @@ namespace ContactsAppUI
             this.buttonOk.Location = new System.Drawing.Point(308, 189);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(79, 28);
-            this.buttonOk.TabIndex = 16;
+            this.buttonOk.TabIndex = 7;
             this.buttonOk.Text = "OK";
             this.buttonOk.UseVisualStyleBackColor = true;
             this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
