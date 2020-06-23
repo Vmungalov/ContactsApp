@@ -9,8 +9,6 @@ namespace ContactsAppUI
 {
     public class UiManager
     {
-        private MainForm MainForm;
-
         /// <summary>
         /// Загрузка списка контактов и запуск основной формы
         /// </summary>
@@ -20,8 +18,7 @@ namespace ContactsAppUI
             try
             {
                 var status = await ProjectManager.LoadProjectAsync();
-                MainForm = new MainForm(status);
-                MainForm.FormClosing += MainFormOnFormClosing;
+                var mainForm = new MainForm(status);
                 Application.Run(new MainForm(status));
             }
             catch (ProjectFileCorruptedException ex)
@@ -77,11 +74,6 @@ namespace ContactsAppUI
                 MessageBoxButtons.OK);
             CloseApplication(null, false);
         }
-        
-        private void MainFormOnFormClosing(object sender, FormClosingEventArgs e)
-        {
-            //CloseApplication();
-        }
 
         public void CloseApplication(Project project, bool save = true)
         {
@@ -90,6 +82,8 @@ namespace ContactsAppUI
             Application.Exit();
         }
 
-        public static UiManager Current = new UiManager();
+        private static readonly Lazy<UiManager> _current = new Lazy<UiManager>(() => new UiManager());
+        
+        public static UiManager Current => _current.Value;
     }
 }

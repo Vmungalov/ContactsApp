@@ -49,7 +49,6 @@ namespace ContactsAppUI
             this.surnameTextBox = new System.Windows.Forms.TextBox();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.nameLabel = new System.Windows.Forms.Label();
-            this.birthdayDatePicker = new System.Windows.Forms.DateTimePicker();
             this.birthdayLabel = new System.Windows.Forms.Label();
             this.phoneTextBox = new System.Windows.Forms.TextBox();
             this.phoneLabel = new System.Windows.Forms.Label();
@@ -62,6 +61,7 @@ namespace ContactsAppUI
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.contactsListBox = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.birthdayTextBox = new System.Windows.Forms.TextBox();
             this.menuStrip.SuspendLayout();
             this.rightTablePanelLayout.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -255,17 +255,6 @@ namespace ContactsAppUI
             this.nameLabel.Text = "Имя:";
             this.nameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // birthdayDatePicker
-            // 
-            this.birthdayDatePicker.Anchor =
-                ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Left |
-                                                       System.Windows.Forms.AnchorStyles.Right)));
-            this.birthdayDatePicker.Enabled = false;
-            this.birthdayDatePicker.Location = new System.Drawing.Point(114, 61);
-            this.birthdayDatePicker.Name = "birthdayDatePicker";
-            this.birthdayDatePicker.Size = new System.Drawing.Size(276, 23);
-            this.birthdayDatePicker.TabIndex = 5;
-            // 
             // birthdayLabel
             // 
             this.birthdayLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -365,6 +354,7 @@ namespace ContactsAppUI
             this.rightTablePanelLayout.ColumnStyles.Add(
                 new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 111F));
             this.rightTablePanelLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.rightTablePanelLayout.Controls.Add(this.birthdayTextBox, 1, 2);
             this.rightTablePanelLayout.Controls.Add(this.surnameTextBox, 1, 0);
             this.rightTablePanelLayout.Controls.Add(this.vkTextBox, 1, 5);
             this.rightTablePanelLayout.Controls.Add(this.vkLabel, 0, 5);
@@ -376,7 +366,6 @@ namespace ContactsAppUI
             this.rightTablePanelLayout.Controls.Add(this.birthdayLabel, 0, 2);
             this.rightTablePanelLayout.Controls.Add(this.phoneTextBox, 1, 3);
             this.rightTablePanelLayout.Controls.Add(this.phoneLabel, 0, 3);
-            this.rightTablePanelLayout.Controls.Add(this.birthdayDatePicker, 1, 2);
             this.rightTablePanelLayout.Location = new System.Drawing.Point(248, 32);
             this.rightTablePanelLayout.MinimumSize = new System.Drawing.Size(393, 174);
             this.rightTablePanelLayout.Name = "rightTablePanelLayout";
@@ -393,6 +382,8 @@ namespace ContactsAppUI
                 new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.rightTablePanelLayout.RowStyles.Add(
                 new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.rightTablePanelLayout.RowStyles.Add(
+                new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.rightTablePanelLayout.Size = new System.Drawing.Size(393, 174);
             this.rightTablePanelLayout.TabIndex = 13;
             // 
@@ -453,6 +444,18 @@ namespace ContactsAppUI
             this.panel1.Size = new System.Drawing.Size(230, 38);
             this.panel1.TabIndex = 3;
             // 
+            // birthdayTextBox
+            // 
+            this.birthdayTextBox.Anchor =
+                ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Left |
+                                                       System.Windows.Forms.AnchorStyles.Right)));
+            this.birthdayTextBox.Location = new System.Drawing.Point(114, 61);
+            this.birthdayTextBox.MaxLength = 50;
+            this.birthdayTextBox.Name = "birthdayTextBox";
+            this.birthdayTextBox.ReadOnly = true;
+            this.birthdayTextBox.Size = new System.Drawing.Size(276, 23);
+            this.birthdayTextBox.TabIndex = 3;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -490,7 +493,6 @@ namespace ContactsAppUI
         private System.Windows.Forms.TextBox surnameTextBox;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.TextBox nameTextBox;
-        private System.Windows.Forms.DateTimePicker birthdayDatePicker;
         private System.Windows.Forms.Label phoneLabel;
         private System.Windows.Forms.Label birthdayLabel;
         private System.Windows.Forms.Label emailLabel;
@@ -510,5 +512,6 @@ namespace ContactsAppUI
         private System.Windows.Forms.ToolStripMenuItem addContactToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editContactToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteContactToolStripMenuItem;
+        private System.Windows.Forms.TextBox birthdayTextBox;
     }
 }

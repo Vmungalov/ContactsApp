@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
@@ -9,56 +10,127 @@ namespace ContactsAppUI
 {
     public partial class MainForm : Form
     {
-        private BindingList<Contact> _contactsList;
-        private int _selectedContactIndex = 0;
-        private string _substring;
+        private BindingList<Contact> _shownContacts;
+        private int _selectedContactIndex;
+        private string _substring = "";
 
+        private BindingList<Contact> ShownContacts
+        {
+            get => _shownContacts;
+            set => _shownContacts = value;
+        }
+        private int SelectedContactIndex
+        {
+            get => _selectedContactIndex;
+            set
+            {
+                _selectedContactIndex = value;
+                if (value < 0)
+                    SwitchState(false);
+                else
+                    SwitchState(true);
+            }
+        }
+        
+        /// <summary>
+        /// Переменная для поисковой строки
+        /// </summary>
         private string Substring
         {
             get => _substring;
             set
             {
                 _substring = value;
-                ContactsList = new BindingList<Contact>(ContactsData.ContactList.Where(i => 
-                    i.Surname.StartsWith(_substring ?? "")).ToList());
-                contactsListBox.DataSource = ContactsList;
+                UpdateShownContacts();
             }
         }
         
-        private BindingList<Contact> ContactsList
-        {
-            get => _contactsList;
-            set
-            {
-                _contactsList = value;
-            }
-        }
-        public Project ContactsData;
-
+        public Project Project;
+        
         public MainForm(ProjectStatus status)
         {
-            ContactsData = status.Project;
-            _contactsList = new BindingList<Contact>(ContactsData.ContactList);
             InitializeComponent();
-            contactsListBox.DataSource = _contactsList;
+            Project = status.Project;
+            ShownContacts = new BindingList<Contact>(Project.ContactList);
+            contactsListBox.DataSource = ShownContacts;
         }
-
-        #region Privates
         
-        private void OpenAboutForm()
+        /// <summary>
+        /// Метод "UpdateRightPanelValues" обновляет значения в правой панели
+        /// </summary>
+        /// <param name="erase">"Истина", если необходимо очистить правую панель ото всех значений.
+        /// Иначе "ложь".</param>
+        private void UpdateRightPanelValues(bool erase = false)
         {
-            // Блокирование формы на время присутствия на экране окна "О программе"
-            Enabled = false;
-            AboutForm aboutForm = new AboutForm();
-            using (aboutForm)
-            {
-                // Показ окна
-                var result = aboutForm.ShowDialog();
-            }
-            // Форма вновь активна
-            Enabled = true;
+            surnameTextBox.Text = erase ? "" : ShownContacts[_selectedContactIndex].Surname;
+            nameTextBox.Text = erase ? "" : ShownContacts[_selectedContactIndex].FirstName;
+            birthdayTextBox.Text = erase ? "" : ShownContacts[_selectedContactIndex].Birthday.ToString("D");
+            phoneTextBox.Text = erase ? "" : ContactsApp.Converters.PhoneNumberConverter.
+                ConvertPhoneToString(ShownContacts[_selectedContactIndex].Number.Number);
+            emailTextBox.Text = erase ? "" : ShownContacts[_selectedContactIndex].Email;
+            vkTextBox.Text = erase ? "" : ShownContacts[_selectedContactIndex].IdVk;
         }
 
+        /// <summary>
+        /// Метод "SwitchEdit" переключает состояние кнопок редактирования и удаления контактов
+        /// </summary>
+        /// <param name="enabled">"Истина", если кнопки необходимо включить. Иначе "ложь".</param>
+        private void SwitchEdit(bool enabled)
+        {
+            editContactToolStripMenuItem.Enabled = enabled;
+            deleteContactToolStripMenuItem.Enabled = enabled;
+            buttonEdit.Enabled = enabled;
+            buttonDelete.Enabled = enabled;
+        }
+
+        /// <summary>
+        /// Переключает состояние формы (возможно редактирование или нет, а также отображаемый контакт).
+        /// </summary>
+        /// <param name="enabled">"Истина", если нужно обновить правую панель без очистки 
+        /// и включить возможность редактирования и удаления контакта. Иначе "ложь".</param>
+        private void SwitchState(bool enabled)
+        {
+            UpdateRightPanelValues(!enabled);
+            SwitchEdit(enabled);
+        }
+
+        /// <summary>
+        /// Метод "UpdateShownContacts" обновляет списко показываемых контактов.
+        /// При необходимости блокируются кнопки редактирования и удаления контактов.
+        /// </summary>
+        private void UpdateShownContacts()
+        {
+            // Выделение списка контактов, начинающихся со введённой пользователем подстроки
+            var selected = Project.ContactList.Where(i =>
+                i.Surname.StartsWith(Substring)).ToList();
+            // Формирование списка
+            ShownContacts = new BindingList<Contact>(selected);
+            // Новая привязка
+            // Это делается для исключения ошибок с индексами
+            contactsListBox.DataSource = ShownContacts;
+            if (ShownContacts.Count == 0)
+                // Если контактов нет, то в правой панели ничего отображаться не будет, а кнопки
+                // редактирования и удаления будут выключены
+                SwitchState(false);
+            else if (SelectedContactIndex < 0)
+                // Аналогично если индекс выбранного контакта меньше нуля (контакт не выбран)
+                SwitchState(false);
+            else
+                // Всё включается
+                SwitchState(true);
+        }
+
+        /// <summary>
+        /// Метод "GetMainIndex" осуществляет получение индекса элемента в основном списке
+        /// через список показываемых элементов
+        /// </summary>
+        /// <param name="shownIndex">Индекс элемента в показываемом списке</param>
+        /// <returns>Индекс элемента в основном списке</returns>
+        private int GetMainIndex(int shownIndex)
+        {
+            return Project.ContactList.IndexOf(ShownContacts[shownIndex]);
+        }
+        
         /// <summary>
         /// Метод "EditContact" создаёт окно редактирования контакта и позволяет создать/отредактировать контакт
         /// </summary>
@@ -87,7 +159,21 @@ namespace ContactsAppUI
             Enabled = true;
             return result;
         }
-
+        
+        private void OpenAboutForm()
+        {
+            // Блокирование формы на время присутствия на экране окна "О программе"
+            Enabled = false;
+            AboutForm aboutForm = new AboutForm();
+            using (aboutForm)
+            {
+                // Показ окна
+                var result = aboutForm.ShowDialog();
+            }
+            // Форма вновь активна
+            Enabled = true;
+        }
+        
         /// <summary>
         /// Метод "AddContact" вызывает диалоговое окно EditForm для создания контакта
         /// </summary>
@@ -96,43 +182,41 @@ namespace ContactsAppUI
             var result = EditContactOnForm();
             var contact = result.Value;
             if (result.Result == DialogResult.OK)
-                _contactsList.Add(contact);
+            {
+                Project.ContactList.Add(contact);
+                UpdateShownContacts();
+            }
         }
-
+        
         /// <summary>
         /// Метод "EditContact" вызывает диалоговое окно EditForm для редакирования выбранного контакта
         /// </summary>
         private void EditContact()
         {
-            var result = EditContactOnForm(_contactsList[_selectedContactIndex]);
+            int shownIndex = SelectedContactIndex;
+            var edited = ShownContacts[shownIndex];
+            int mainIndex = GetMainIndex(shownIndex);
+            var result = EditContactOnForm(edited);
             var contact = result.Value;
             if (result.Result == DialogResult.OK)
-                _contactsList[_selectedContactIndex] = contact;
+            {
+                Project.ContactList[mainIndex] = contact;
+                UpdateShownContacts();
+            }
         }
-
+        
         /// <summary>
         /// Метод "RemoveContact" удаляет выбранный контакт
         /// </summary>
         private void RemoveContact()
         {
-            _contactsList.RemoveAt(_selectedContactIndex);
+            int shownIndex = SelectedContactIndex;
+            int mainIndex = GetMainIndex(shownIndex);
+            Project.ContactList.RemoveAt(mainIndex);
+            if (SelectedContactIndex == ShownContacts.Count)
+                SelectedContactIndex--;
+            UpdateShownContacts();
         }
-
-        /// <summary>
-        /// Метод "UpdateRightPanelValues" обновляет значения в правой панели
-        /// </summary>
-        private void UpdateRightPanelValues()
-        {
-            surnameTextBox.Text = _contactsList[_selectedContactIndex].Surname;
-            nameTextBox.Text = _contactsList[_selectedContactIndex].FirstName;
-            birthdayDatePicker.Value = _contactsList[_selectedContactIndex].Birthday;
-            phoneTextBox.Text = ContactsApp.Converters.PhoneNumberConverter.
-                ConvertPhoneToString(_contactsList[_selectedContactIndex].Number.Number);
-            emailTextBox.Text = _contactsList[_selectedContactIndex].Email;
-            vkTextBox.Text = _contactsList[_selectedContactIndex].IdVk;
-        }
-        
-        #endregion
         
         #region Events
         
@@ -153,8 +237,7 @@ namespace ContactsAppUI
         /// <param name="e"></param>
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ContactsData.ContactList = _contactsList.ToList();
-            UiManager.Current.CloseApplication(ContactsData);
+            UiManager.Current.CloseApplication(Project);
         }
         
         /// <summary>
@@ -164,12 +247,10 @@ namespace ContactsAppUI
         /// <param name="e"></param>
         private void contactsListBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            var s = (ListBox) sender;
-            int index = s.SelectedIndex;
+            var s = (ListBox)sender;
             // Пользователь может кликнуть по пустой области в ListBox
             // В таком случае SelectedIndex будет равен -1
-            _selectedContactIndex = index >= 0 ? index : _selectedContactIndex;
-            UpdateRightPanelValues();
+            SelectedContactIndex = s.SelectedIndex;
         }
         
         /// <summary>
@@ -234,7 +315,7 @@ namespace ContactsAppUI
         
         private void searchTextBox_TextChanged(object sender, EventArgs e)
         {
-            var substr = ((TextBox) sender).Text;
+            var substr = ((TextBox)sender).Text;
             Substring = substr;
         }
         
