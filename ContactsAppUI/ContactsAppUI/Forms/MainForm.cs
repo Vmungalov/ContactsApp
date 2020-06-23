@@ -369,6 +369,16 @@ namespace ContactsAppUI
             // Метод CloseApplication сохранит контакты и закроет приложение.
             UiManager.Current.CloseApplication(Project);
         }
+
+        /// <summary>
+        /// Событие нажатия на кнопку "Выход" в меню "Файл"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mainForm_Closing(sender,e);
+        }
         
         /// <summary>
         /// Событие отпускания клавиши "Delete", когда список контактов в фокесу
@@ -383,6 +393,5 @@ namespace ContactsAppUI
             }
         }
         #endregion
-
     }
 }

@@ -58,13 +58,13 @@ namespace ContactsAppUI
             this.vkLabel = new System.Windows.Forms.Label();
             this.panelRight = new System.Windows.Forms.Panel();
             this.birthsPanel = new System.Windows.Forms.Panel();
+            this.birthsLabel = new System.Windows.Forms.Label();
             this.infoPictureBox = new System.Windows.Forms.PictureBox();
             this.rightTablePanelLayout = new System.Windows.Forms.TableLayoutPanel();
             this.birthdayTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.contactsListBox = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.birthsLabel = new System.Windows.Forms.Label();
             this.menuStrip.SuspendLayout();
             this.panelRight.SuspendLayout();
             this.birthsPanel.SuspendLayout();
@@ -158,6 +158,7 @@ namespace ContactsAppUI
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Выход";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // editMenuStrip
             // 
@@ -360,6 +361,19 @@ namespace ContactsAppUI
             this.birthsPanel.TabIndex = 7;
             this.birthsPanel.Visible = false;
             // 
+            // birthsLabel
+            // 
+            this.birthsLabel.Anchor =
+                ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top |
+                                                        System.Windows.Forms.AnchorStyles.Bottom) |
+                                                       System.Windows.Forms.AnchorStyles.Left)));
+            this.birthsLabel.Location = new System.Drawing.Point(79, 3);
+            this.birthsLabel.MaximumSize = new System.Drawing.Size(304, 70);
+            this.birthsLabel.Name = "birthsLabel";
+            this.birthsLabel.Size = new System.Drawing.Size(304, 70);
+            this.birthsLabel.TabIndex = 1;
+            this.birthsLabel.Text = "Сегодня празднуют день рождения ";
+            // 
             // infoPictureBox
             // 
             this.infoPictureBox.Anchor =
@@ -487,19 +501,6 @@ namespace ContactsAppUI
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(230, 38);
             this.panel1.TabIndex = 3;
-            // 
-            // birthsLabel
-            // 
-            this.birthsLabel.Anchor =
-                ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top |
-                                                        System.Windows.Forms.AnchorStyles.Bottom) |
-                                                       System.Windows.Forms.AnchorStyles.Left)));
-            this.birthsLabel.Location = new System.Drawing.Point(79, 3);
-            this.birthsLabel.MaximumSize = new System.Drawing.Size(305, 70);
-            this.birthsLabel.Name = "birthsLabel";
-            this.birthsLabel.Size = new System.Drawing.Size(305, 70);
-            this.birthsLabel.TabIndex = 1;
-            this.birthsLabel.Text = "Сегодня празднуют день рождения ";
             // 
             // MainForm
             // 
