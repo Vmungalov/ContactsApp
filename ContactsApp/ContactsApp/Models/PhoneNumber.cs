@@ -76,5 +76,12 @@ namespace ContactsApp
                 number = number / 10;
             return number % 10;
         }
+
+        public bool Equals(PhoneNumber obj)
+        {
+            if (obj == null)
+                return false;
+            return Number == obj.Number;
+        }
     }
 }

@@ -37,7 +37,7 @@ namespace ContactsApp
         /// Метод "SaveProjectAsync" асинхронно записывает список контактов в файл
         /// </summary>
         /// <param name="project">Объект класса Project, содержащий список контактов</param>
-        /// <param name="backup">Булевая переменная, значение которой определяет необходимость записать информацию в
+        /// <param name="backup">Булева переменная, значение которой определяет необходимость записать информацию в
         /// резервный файл. "Истина", если нужно писать бэкап, иначе "ложь"</param>
         public static async Task SaveProjectAsync(Project project, bool backup)
         {

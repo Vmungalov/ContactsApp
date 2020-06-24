@@ -132,5 +132,15 @@ namespace ContactsApp
             contact.Birthday = Birthday;
             return contact;
         }
+        
+        public bool Equals(Contact other)
+        {
+            return other.Surname.Equals(Surname)
+                   && other.FirstName.Equals(FirstName)
+                   && other.Birthday.Equals(Birthday)
+                   && other.Number.Equals(Number)
+                   && other.Email.Equals(Email)
+                   && other.IdVk.Equals(IdVk);
+        }
     }
 }

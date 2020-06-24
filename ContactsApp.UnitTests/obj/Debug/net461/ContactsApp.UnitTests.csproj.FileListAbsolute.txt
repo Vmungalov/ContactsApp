@@ -9,7 +9,6 @@ Z:\Projects\ContactsApp2\ContactsApp.UnitTests\bin\Debug\net461\nunit.framework.
 Z:\Projects\ContactsApp2\ContactsApp.UnitTests\bin\Debug\net461\ContactsApp.dll
 Z:\Projects\ContactsApp2\ContactsApp.UnitTests\bin\Debug\net461\Newtonsoft.Json.dll
 Z:\Projects\ContactsApp2\ContactsApp.UnitTests\bin\Debug\net461\ContactsApp.pdb
-Z:\Projects\ContactsApp2\ContactsApp.UnitTests\bin\Debug\net461\Newtonsoft.Json.xml
 Z:\Projects\ContactsApp2\ContactsApp.UnitTests\obj\Debug\net461\ContactsApp.UnitTests.csprojAssemblyReference.cache
 Z:\Projects\ContactsApp2\ContactsApp.UnitTests\obj\Debug\net461\ContactsApp.UnitTests.AssemblyInfoInputs.cache
 Z:\Projects\ContactsApp2\ContactsApp.UnitTests\obj\Debug\net461\ContactsApp.UnitTests.AssemblyInfo.cs
