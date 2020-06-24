@@ -33,6 +33,20 @@
         <e p="Paths.cs" t="Include" />
       </e>
     </e>
+    <e p="Z:\Projects\ContactsApp2\ContactsApp.UnitTests" t="IncludeRecursive">
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="ContactsApp.UnitTests.csproj" t="IncludeRecursive" />
+      <e p="ContactTest.cs" t="Include" />
+      <e p="obj" t="ExcludeRecursive">
+        <e p="Debug" t="Include">
+          <e p="net461" t="Include">
+            <e p="ContactsApp.UnitTests.AssemblyInfo.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="PhoneNumberTest.cs" t="Include" />
+      <e p="UnitTest1.cs" t="Include" />
+    </e>
     <e p="Z:\Projects\ContactsApp2\ContactsAppUI" t="IncludeFlat">
       <e p="ContactsAppUI" t="IncludeRecursive">
         <e p="App.config" t="Include" />
@@ -73,20 +87,6 @@
         <e p="UiManager.cs" t="Include" />
       </e>
       <e p="ContactsAppUI.sln" t="IncludeFlat" />
-      <e p="ContactsAppUnitTests" t="IncludeRecursive">
-        <e p="bin" t="ExcludeRecursive" />
-        <e p="ContactsAppUnitTests.csproj" t="IncludeRecursive" />
-        <e p="ContactTest.cs" t="Include" />
-        <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
-            <e p="net461" t="Include">
-              <e p="ContactsAppUnitTests.AssemblyInfo.cs" t="Include" />
-            </e>
-          </e>
-        </e>
-        <e p="PhoneNumberTest.cs" t="Include" />
-        <e p="UnitTest1.cs" t="Include" />
-      </e>
       <e p="packages" t="ExcludeRecursive" />
     </e>
   </component>
