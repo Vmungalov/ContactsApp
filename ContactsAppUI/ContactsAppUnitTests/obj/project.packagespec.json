@@ -1,0 +1,52 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "Z:\\Projects\\ContactsApp2\\ContactsAppUI\\ContactsAppUnitTests\\ContactsAppUnitTests.csproj",
+    "projectName": "ContactsAppUnitTests",
+    "projectPath": "Z:\\Projects\\ContactsApp2\\ContactsAppUI\\ContactsAppUnitTests\\ContactsAppUnitTests.csproj",
+    "outputPath": "Z:\\Projects\\ContactsApp2\\ContactsAppUI\\ContactsAppUnitTests\\obj\\",
+    "projectStyle": "PackageReference",
+    "fallbackFolders": [
+      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+    ],
+    "originalTargetFrameworks": [
+      "net461"
+    ],
+    "sources": {
+      "https://api.nuget.org/v3/index.json": {}
+    },
+    "frameworks": {
+      "net461": {
+        "projectReferences": {
+          "Z:\\Projects\\ContactsApp2\\ContactsApp\\ContactsApp\\ContactsApp.csproj": {
+            "projectPath": "Z:\\Projects\\ContactsApp2\\ContactsApp\\ContactsApp\\ContactsApp.csproj"
+          }
+        }
+      }
+    },
+    "warningProperties": {
+      "warnAsError": [
+        "NU1605"
+      ]
+    }
+  },
+  "frameworks": {
+    "net461": {
+      "dependencies": {
+        "Microsoft.NET.Test.Sdk": {
+          "target": "Package",
+          "version": "[16.2.0, )"
+        },
+        "NUnit3TestAdapter": {
+          "target": "Package",
+          "version": "[3.13.0, )"
+        },
+        "nunit": {
+          "target": "Package",
+          "version": "[3.12.0, )"
+        }
+      },
+      "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+    }
+  }
+}

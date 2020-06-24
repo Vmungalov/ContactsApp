@@ -33,6 +33,11 @@ namespace ContactsApp
                 ToList();
         }
 
+        /// <summary>
+        /// Метод "GetContactsByBirthday" возвращает список контактов, чья дата рождения совпадает со входной
+        /// </summary>
+        /// <param name="date">Дата рождения</param>
+        /// <returns>Список именинников</returns>
         public List<Contact> GetContactsByBirthday(DateTime date)
         {
             return ContactList?.Where(i =>
