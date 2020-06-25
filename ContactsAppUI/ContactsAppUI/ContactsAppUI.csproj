@@ -34,6 +34,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DisableOutOfProcTaskHost>true</DisableOutOfProcTaskHost>
+    <PreBuildEvent>md $(SolutionDir)InstallScripts\Release</PreBuildEvent>
+    <PostBuildEvent>
+      xcopy $(ProjectDir)$(OutDir)*.exe $(SolutionDir)InstallScripts\Release
+      xcopy $(ProjectDir)$(OutDir)*.dll $(SolutionDir)InstallScripts\Release
+      "C:\Users\VADIM\AppData\Local\Programs\Inno Setup 6\ISCC.exe" $(SolutionDir)InstallScripts\installScript.iss
+      rmdir /S /Q $(SolutionDir)InstallScripts\Release
+    </PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
