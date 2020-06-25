@@ -44,12 +44,12 @@ namespace ContactsApp
                 throw new ProjectFileCorruptedException(ex, ex.Message, path);
             }
             // Недостаточно прав для чтения файла
-            catch (InsufficientPermissionsException ex)
+            catch (InsufficientPermissionsException)
             {
                 throw;
             }
             // Ошибка ввода/вывода при чтении файла
-            catch (ProjectReadingException ex)
+            catch (ProjectReadingException)
             {
                 throw;
             }
@@ -81,7 +81,7 @@ namespace ContactsApp
                 // Запись файла
                 await OverwriteFile(path, data);
             }
-            catch (InsufficientPermissionsException ex)
+            catch (InsufficientPermissionsException)
             {
                 throw;
             }

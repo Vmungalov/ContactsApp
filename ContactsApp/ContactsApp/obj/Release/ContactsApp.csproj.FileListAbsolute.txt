@@ -1,0 +1,8 @@
+Z:\Projects\ContactsApp2\ContactsApp\ContactsApp\bin\Release\ContactsApp.dll
+Z:\Projects\ContactsApp2\ContactsApp\ContactsApp\bin\Release\ContactsApp.pdb
+Z:\Projects\ContactsApp2\ContactsApp\ContactsApp\bin\Release\Newtonsoft.Json.dll
+Z:\Projects\ContactsApp2\ContactsApp\ContactsApp\bin\Release\Newtonsoft.Json.xml
+Z:\Projects\ContactsApp2\ContactsApp\ContactsApp\obj\Release\ContactsApp.csprojAssemblyReference.cache
+Z:\Projects\ContactsApp2\ContactsApp\ContactsApp\obj\Release\ContactsApp.csproj.CopyComplete
+Z:\Projects\ContactsApp2\ContactsApp\ContactsApp\obj\Release\ContactsApp.dll
+Z:\Projects\ContactsApp2\ContactsApp\ContactsApp\obj\Release\ContactsApp.pdb

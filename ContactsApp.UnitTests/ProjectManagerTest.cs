@@ -67,7 +67,7 @@ namespace ContactsAppUnitTests
         }
 
         [Test(Description = "Попытка загрузить испорченный файл"), Order(2), NonParallelizable]
-        public async Task LoadingCorruptedFileTest()
+        public void LoadingCorruptedFileTest()
         {
             Assert.ThrowsAsync<ProjectFileCorruptedException>(async () =>
             {

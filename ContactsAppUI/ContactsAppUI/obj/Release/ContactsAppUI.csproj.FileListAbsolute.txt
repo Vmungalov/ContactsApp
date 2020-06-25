@@ -1,0 +1,16 @@
+Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\bin\Release\ContactsAppUI.exe.config
+Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\bin\Release\ContactsAppUI.exe
+Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\bin\Release\ContactsAppUI.pdb
+Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\bin\Release\ContactsApp.dll
+Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\bin\Release\Newtonsoft.Json.dll
+Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\bin\Release\ContactsApp.pdb
+Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\bin\Release\Newtonsoft.Json.xml
+Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\obj\Release\ContactsAppUI.csprojAssemblyReference.cache
+Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\obj\Release\ContactsAppUI.AboutForm.resources
+Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\obj\Release\ContactsAppUI.EditForm.resources
+Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\obj\Release\ContactsAppUI.MainForm.resources
+Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\obj\Release\ContactsAppUI.Properties.Resources.resources
+Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\obj\Release\ContactsAppUI.csproj.GenerateResource.cache
+Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\obj\Release\ContactsAppUI.csproj.CopyComplete
+Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\obj\Release\ContactsAppUI.exe
+Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\obj\Release\ContactsAppUI.pdb

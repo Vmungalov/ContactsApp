@@ -21,15 +21,15 @@ namespace ContactsAppUI
                 var mainForm = new MainForm(status);
                 Application.Run(mainForm);
             }
-            catch (ProjectFileCorruptedException ex)
+            catch (ProjectFileCorruptedException)
             {
                 await HandleCorruptedFileError();
             }
-            catch (InsufficientPermissionsException ex)
+            catch (InsufficientPermissionsException)
             {
                 HandlePermissionsError();
             }
-            catch (ProjectReadingException ex)
+            catch (ProjectReadingException)
             {
                 HandleReadError();
             }
