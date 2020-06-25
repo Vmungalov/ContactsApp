@@ -59,14 +59,14 @@ namespace ContactsAppUnitTests
             }
         }
         
-        [Test(Description = "Тест на успешную загрузку файла с проектом")]
+        [Test(Description = "Тест на успешную загрузку файла с проектом"), Order(1), NonParallelizable]
         public async Task SuccessfulLoadingTest()
         {
             _status = await ProjectManager.LoadProjectAsync();
             Assert.AreEqual(_status.Status, LoadingStatus.Success, "Не удалось загрузить проект.");
         }
 
-        [Test(Description = "Попытка загрузить испорченный файл")]
+        [Test(Description = "Попытка загрузить испорченный файл"), Order(2), NonParallelizable]
         public async Task LoadingCorruptedFileTest()
         {
             Assert.ThrowsAsync<ProjectFileCorruptedException>(async () =>
@@ -80,7 +80,7 @@ namespace ContactsAppUnitTests
             });
         }
 
-        [Test(Description = "Попытка сохранить и загрузить проект")]
+        [Test(Description = "Попытка сохранить и загрузить проект"), Order(3), NonParallelizable]
         public async Task SuccessfulSavingTest()
         {
             await ProjectManager.SaveProjectAsync(_project, false);
@@ -88,7 +88,7 @@ namespace ContactsAppUnitTests
             Assert.AreEqual(_project.ContactList, loadStatus.Project.ContactList, "Проект сохранился с искажениями.");
         }
 
-        [Test(Description = "Попытка записать и прочитать бэкап контакта")]
+        [Test(Description = "Попытка записать и прочитать бэкап контакта"), Order(4), NonParallelizable]
         public async Task SuccessfulBackupTest()
         {
             var contact = new Contact()
@@ -116,7 +116,7 @@ namespace ContactsAppUnitTests
             Assert.True(backup.Equals(readBackup), "Контакт бэкапится с искажениями");
         }
         
-        [Test(Description = "Попытка пересоздать проект")]
+        [Test(Description = "Попытка пересоздать проект"), Order(5), NonParallelizable]
         public async Task SuccessfulOverCreatingTest()
         {
             var test = new Project();
