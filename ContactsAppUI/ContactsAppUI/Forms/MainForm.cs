@@ -8,6 +8,8 @@ using ContactsAppUI.Models;
 
 namespace ContactsAppUI
 {
+    // TODO: нет билд-ивентов или бат-файла в репозитории для запуска автоматической сборки установщика
+    // TODO: добавить иконку программе
     public partial class MainForm : Form
     {
         private BindingList<Contact> _shownContacts;
@@ -47,6 +49,7 @@ namespace ContactsAppUI
             }
         }
         
+        // TODO: почему открытые поля?
         public Project Project;
         
         public MainForm(ProjectStatus status)
@@ -145,6 +148,7 @@ namespace ContactsAppUI
         {
             // Блокирование формы на время присутствия на экране окна редактирования контакта
             Enabled = false;
+            // TODO: зачем форме для редактирования знать о том, какой индекс у редактируемого контакта? Это лишние для второй формы данные, их не нужно передавать.
             EditForm editForm = new EditForm(contact,_selectedContactIndex);
             DialogReturn<Contact> result = new DialogReturn<Contact>()
             {
@@ -395,3 +399,5 @@ namespace ContactsAppUI
         #endregion
     }
 }
+
+// TODO: и не забудь добавить gitignore в проект, заодно поудалять из репозитория весь шлак obj и bin папок. gitignore надо создавать СРАЗУ вместе с репозиторием

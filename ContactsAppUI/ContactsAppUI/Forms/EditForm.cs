@@ -10,13 +10,17 @@ using ContactsApp.Converters;
 
 namespace ContactsAppUI
 {
+    // TODO: убрать иконку у второстепенного окна
+    // TODO: название формы правильнее строить от названия редактируемого объекта, а не от глагола. Просто глагол не показывает, что именно редактируется в окне
     public partial class EditForm : Form
     {
+        // TODO: используются делегаты с параллелизмом, но для хранения ошибок используется не errorProvider? Странно...
         private Dictionary<int,string> Errors = new Dictionary<int,string>();
 
         public Contact ContactInfo { get; private set; }
         public int Index { get; private set; }
-        
+
+        // TODO: правильнее делать передачу данных в форму через свойство, а не через конструктор. Иначе, например, ты не можешь заранее создать объект окна для переиспользования
         public EditForm(Contact contact = null, int index = -1)
         {
             ContactInfo = contact ?? new Contact();
@@ -39,6 +43,7 @@ namespace ContactsAppUI
             vkTextBox.Text = ContactInfo.IdVk;
         }
 
+        // TODO: никаких сокращений в названиях переменных, методов и классов
         /// <summary>
         /// Метод "ValidateTextAndBackup" осуществляет валидацию текстовых полей после утери фокуса.
         /// Если нет ошибок, то контакт бэкапится.
@@ -161,6 +166,8 @@ namespace ContactsAppUI
         /// <returns></returns>
         private async Task BackupContact()
         {
+            // TODO: всю работу с бэкапами в топку. У тебя есть один простой объект, который можно склонировать и хранить полем внутри окна.
+            // Гонять жесткий диск из-за полукилобайта данных, да еще получить кучу потенциальных проблем с невозможностью чтения/записи файла - оно того не стоит.
             ContactBackup backup = new ContactBackup()
             {
                 Contact = ContactInfo,

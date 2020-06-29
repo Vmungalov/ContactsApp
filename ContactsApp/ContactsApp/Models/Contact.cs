@@ -7,7 +7,9 @@ namespace ContactsApp
     /// </summary>
     public class Contact : ICloneable
     {
+        // TODO: сделать константой
         private DateTime _minDate = new DateTime(1900,1,1);
+        // TODO: макс. длина чего?
         public short MaxLength = 50;
         
         private DateTime _birthday = new DateTime(1900,01,01);
@@ -66,7 +68,7 @@ namespace ContactsApp
             get => _birthday;
             set => _birthday = value;
         }
-
+        // TODO: Это должно быть частью свойства, а не отдельным методом
         public bool SetSurname(string value)
         {
             if (TextIsValid(value))
@@ -77,7 +79,8 @@ namespace ContactsApp
             throw new ArgumentException("Длина фамилии не должна превышать " + 
                                         MaxLength + " знаков.");
         }
-        
+
+        // TODO: Это должно быть частью свойства, а не отдельным методом
         public bool SetFirstName(string value)
         {
             if (TextIsValid(value))
@@ -88,7 +91,8 @@ namespace ContactsApp
             throw new ArgumentException("Длина имени не должна превышать " + 
                                         MaxLength + " знаков.");
         }
-        
+
+        // TODO: Это должно быть частью свойства, а не отдельным методом
         public bool SetEmail(string value)
         {
             if (TextIsValid(value))
@@ -99,7 +103,8 @@ namespace ContactsApp
             throw new ArgumentException("Длина E-Mail не должна превышать " + 
                                         MaxLength + " знаков.");
         }
-        
+
+        // TODO: Это должно быть частью свойства, а не отдельным методом
         public bool SetVkId(string value)
         {
             if (TextIsValid(value))
@@ -111,6 +116,7 @@ namespace ContactsApp
                                         MaxLength + " знаков.");
         }
 
+        // TODO: Это должно быть частью свойства, а не отдельным методом
         public bool SetBirthday(DateTime date)
         {
             if (DateIsValid(date))

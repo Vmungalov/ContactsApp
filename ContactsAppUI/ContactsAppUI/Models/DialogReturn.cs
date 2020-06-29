@@ -2,6 +2,7 @@
 
 namespace ContactsAppUI.Models
 {
+    // TODO: вместо создания класса можно было использовать кортежи Tuple
     public class DialogReturn<T>
     {
         public T Value { get; set; }

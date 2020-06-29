@@ -15,3 +15,11 @@ Z:\Projects\ContactsApp2\ContactsApp\ContactsApp\obj\Debug\ContactsApp.csprojAss
 Z:\Projects\ContactsApp2\ContactsApp\ContactsApp\obj\Debug\ContactsApp.csproj.CopyComplete
 Z:\Projects\ContactsApp2\ContactsApp\ContactsApp\obj\Debug\ContactsApp.dll
 Z:\Projects\ContactsApp2\ContactsApp\ContactsApp\obj\Debug\ContactsApp.pdb
+C:\Users\developer\Source\Repos\Students\NTVP\2020_Mungalov_ContactsApp\ContactsApp\ContactsApp\bin\Debug\ContactsApp.dll
+C:\Users\developer\Source\Repos\Students\NTVP\2020_Mungalov_ContactsApp\ContactsApp\ContactsApp\bin\Debug\ContactsApp.pdb
+C:\Users\developer\Source\Repos\Students\NTVP\2020_Mungalov_ContactsApp\ContactsApp\ContactsApp\bin\Debug\Newtonsoft.Json.dll
+C:\Users\developer\Source\Repos\Students\NTVP\2020_Mungalov_ContactsApp\ContactsApp\ContactsApp\bin\Debug\Newtonsoft.Json.xml
+C:\Users\developer\Source\Repos\Students\NTVP\2020_Mungalov_ContactsApp\ContactsApp\ContactsApp\obj\Debug\ContactsApp.csprojAssemblyReference.cache
+C:\Users\developer\Source\Repos\Students\NTVP\2020_Mungalov_ContactsApp\ContactsApp\ContactsApp\obj\Debug\ContactsApp.csproj.CopyComplete
+C:\Users\developer\Source\Repos\Students\NTVP\2020_Mungalov_ContactsApp\ContactsApp\ContactsApp\obj\Debug\ContactsApp.dll
+C:\Users\developer\Source\Repos\Students\NTVP\2020_Mungalov_ContactsApp\ContactsApp\ContactsApp\obj\Debug\ContactsApp.pdb

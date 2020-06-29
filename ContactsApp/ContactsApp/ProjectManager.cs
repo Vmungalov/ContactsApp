@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 
 namespace ContactsApp
 {
+    // TODO: поудалять всё, что связано с бэкапами
     /// <summary>
     /// Класс "ProjectManager", в котором происходит работа с файлом.
     /// </summary>

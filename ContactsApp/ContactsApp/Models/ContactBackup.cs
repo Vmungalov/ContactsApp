@@ -1,5 +1,7 @@
 ﻿namespace ContactsApp
 {
+    // TODO: зачем этот класс? Просто для сохранения промежуточных результатов в EditForm?
+    // Не проще ли хранить бэкап в дополнительном поле в форме, чем создавать кучу прикладной логики во всём проекте
     public class ContactBackup
     {
         public Contact Contact;
