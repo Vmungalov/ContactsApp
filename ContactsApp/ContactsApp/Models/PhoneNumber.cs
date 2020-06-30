@@ -2,44 +2,32 @@
 
 namespace ContactsApp
 {
-    public enum PhoneType
-    {
-        Private,
-        Work,
-        Home,
-        Main
-    }
-    
+   
     /// <summary>
     /// Класс "PhoneNumber", в котором содержатся данные о номере телефона контакта.
     /// </summary>
     public class PhoneNumber
     {
-        public PhoneType Type { get; set; } = PhoneType.Private;
+        private long _number = 70000000000;
 
         /// <summary>
         /// Число, содержащее в себе номер телефона.
         /// На данные момент имеются ограничения.
         /// Номер телефона должен иметь 11 цифр и начинаться с 7.
         /// </summary>
-        /// <exception cref="ArgumentException">Исключение, бросаемое при числа, не подходящего под ограничения</exception> // TODO: у тебя пустое автосвойство без проверок - оно не будет кидать исключения в такой реализации
-        public long Number { get; set; }
-
-        // TODO: Это должно быть частью свойства, а не отдельным методом
-        public bool SetNumber(string num)
+        /// <exception cref="ArgumentException">Исключение, бросаемое при числа, не подходящего под ограничения</exception>
+        public long Number
         {
-            // TODO: слишком сложно для такого приложения.
-            // TODO: конвертеры как правило используются не внутри логики, а со стороны интерфейса или допуровня между логикой и интерфейсом. Сама же логика должна работать с конкретными данными полей, а не строками. Просто потому, что на разных формах могут потребоваться разные конвертеры (которые могут зависеть даже от текущего языка пользователя). Чтобы их было проще подменять, они должны быть снаружи
-            long value = Converters.PhoneNumberConverter.ConvertPhoneToLong(num);
-            // TODO: можно и логарифмом, но проще сделать проверку по диапазону, начинающемуся с 7 и не превышающему 11 значные числа
-            // Проверка на количество цифр
-            if (Digits(value) < 11)
-                throw new ArgumentException("Недостаточно цифр в номере телефона");
-            // Проверка на код страны +7
-            if (GetDigit(value,1) != 7)
-                throw new ArgumentException("Код страны должен начинаться с 7");
-            Number = value;
-            return true;
+            get => _number;
+            set
+            {
+                if (Digits(value) < 11)
+                    throw new ArgumentException("Недостаточно цифр в номере телефона");
+                // Проверка на код страны +7
+                if (GetDigit(value,1) != 7)
+                    throw new ArgumentException("Код страны должен начинаться с 7");
+                _number = value;
+            }
         }
 
         /// <summary>
@@ -48,11 +36,9 @@ namespace ContactsApp
         /// </summary>
         /// <param name="num">Строковое представление номера телефона</param>
         /// <returns>"Истина", если номер корректен, иначе "ложь".</returns>
-        public bool NumberIsValid(string num)
+        public bool NumberIsValid(long num)
         {
-            // TODO: в сеттере выше по сути точно такой же код. Попробуй избавиться от дублирования
-            long value = Converters.PhoneNumberConverter.ConvertPhoneToLong(num);
-            if (Digits(value) < 11 || GetDigit(value, 1) != 7)
+            if (Digits(num) < 11 || GetDigit(num, 1) != 7)
                 return false;
             return true;
         }

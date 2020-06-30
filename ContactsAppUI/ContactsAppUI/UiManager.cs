@@ -83,7 +83,7 @@ namespace ContactsAppUI
         public void CloseApplication(Project project, bool save = true)
         {
             if (save)
-                ProjectManager.SaveProjectAsync(project, false);
+                ProjectManager.SaveProjectAsync(project);
             Application.Exit();
         }
 

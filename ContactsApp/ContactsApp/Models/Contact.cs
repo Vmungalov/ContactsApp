@@ -7,11 +7,18 @@ namespace ContactsApp
     /// </summary>
     public class Contact : ICloneable
     {
-        // TODO: сделать константой
-        private DateTime _minDate = new DateTime(1900,1,1);
-        // TODO: макс. длина чего?
+        private readonly DateTime _minDate = new DateTime(1900,1,1);
+
+        /// <summary>
+        /// Максимальная длина фамилии, имени, e-mail и VK ID
+        /// </summary>
         public short MaxLength = 50;
-        
+
+        private string _surname = "";
+        private string _firstName = "";
+        private string _email = "";
+        private string _vkId = "";
+        private PhoneNumber _number = new PhoneNumber();
         private DateTime _birthday = new DateTime(1900,01,01);
 
         /// <summary>
@@ -37,28 +44,75 @@ namespace ContactsApp
         /// <summary>
         /// Поле "Surname", в котором находятся данные о фамилии контакта.
         /// </summary>
-        public string Surname { get; set; } = "";
+        public string Surname
+        {
+            get => _surname;
+            set
+            {
+                if (TextIsValid(value))
+                    _surname = value;
+                else
+                    throw new ArgumentException("Длина фамилии не должна превышать " + 
+                                            MaxLength + " знаков.");
+            } 
+        }
 
         /// <summary>
         /// Поле "FirstName", в котором содержатся данные об имени контакта.
         /// </summary>
-        public string FirstName { get; set; } = "";
-
-
+        public string FirstName
+        {
+            get => _firstName;
+            set
+            {
+                if (TextIsValid(value))
+                    _firstName = value;
+                else
+                    throw new ArgumentException("Длина имени не должна превышать " + 
+                                            MaxLength + " знаков.");
+            }
+        }
+        
         /// <summary>
         /// Поле "Email", в котором содержатся данные о почтовом адресе контакта.
         /// </summary>
-        public string Email { get; set; } = "";
+        public string Email
+        {
+            get => _email;
+            set
+            {
+                if (TextIsValid(value))
+                    _email = value;
+                else
+                    throw new ArgumentException("Длина E-Mail не должна превышать " + 
+                                            MaxLength + " знаков.");
+            }
+        }
 
         /// <summary>
         /// Поле "IdVk", в котором содержатся данные о ID вконтакте контакта.
         /// </summary>
-        public string IdVk { get; set; } = "";
+        public string IdVk
+        {
+            get => _vkId;
+            set
+            {
+                if (TextIsValid(value))
+                    _vkId = value;
+                else
+                    throw new ArgumentException("Длина ID VK не должна превышать " + 
+                                            MaxLength + " знаков.");
+            }
+        }
 
         /// <summary>
         /// Поле "Number", в котором содержатся данные о номере телефона контакта.
         /// </summary>
-        public PhoneNumber Number { get; set; } = new PhoneNumber();
+        public PhoneNumber Number
+        {
+            get => _number;
+            set => _number = value;
+        }
 
         /// <summary>
         /// Поле "Birthday", в котором содержатся данные о дне рождении контакта.
@@ -66,67 +120,15 @@ namespace ContactsApp
         public DateTime Birthday
         {
             get => _birthday;
-            set => _birthday = value;
-        }
-        // TODO: Это должно быть частью свойства, а не отдельным методом
-        public bool SetSurname(string value)
-        {
-            if (TextIsValid(value))
+            set
             {
-                Surname = value;
-                return true;
+                if (DateIsValid(value))
+                    _birthday = value;
+                else
+                    throw new ArgumentException("Введеная неправильная дата рождения.");
             }
-            throw new ArgumentException("Длина фамилии не должна превышать " + 
-                                        MaxLength + " знаков.");
         }
 
-        // TODO: Это должно быть частью свойства, а не отдельным методом
-        public bool SetFirstName(string value)
-        {
-            if (TextIsValid(value))
-            {
-                FirstName = value;
-                return true;
-            }
-            throw new ArgumentException("Длина имени не должна превышать " + 
-                                        MaxLength + " знаков.");
-        }
-
-        // TODO: Это должно быть частью свойства, а не отдельным методом
-        public bool SetEmail(string value)
-        {
-            if (TextIsValid(value))
-            {
-                Email = value;
-                return true;
-            }
-            throw new ArgumentException("Длина E-Mail не должна превышать " + 
-                                        MaxLength + " знаков.");
-        }
-
-        // TODO: Это должно быть частью свойства, а не отдельным методом
-        public bool SetVkId(string value)
-        {
-            if (TextIsValid(value))
-            {
-                IdVk = value;
-                return true;
-            }
-            throw new ArgumentException("Длина ID VK не должна превышать " + 
-                                        MaxLength + " знаков.");
-        }
-
-        // TODO: Это должно быть частью свойства, а не отдельным методом
-        public bool SetBirthday(DateTime date)
-        {
-            if (DateIsValid(date))
-            {
-                Birthday = date;
-                return true;
-            }
-            throw new ArgumentException("Введеная неправильная дата рождения.");
-        }
-        
         public object Clone()
         {
             Contact contact = new Contact();

@@ -10,9 +10,6 @@
     <e p="Z:\Projects\ContactsApp2\ContactsApp\ContactsApp" t="IncludeRecursive">
       <e p="bin" t="ExcludeRecursive" />
       <e p="ContactsApp.csproj" t="IncludeRecursive" />
-      <e p="Converters" t="Include">
-        <e p="PhoneNumberConverter.cs" t="Include" />
-      </e>
       <e p="Exceptions" t="Include">
         <e p="InsufficientPermissionsException.cs" t="Include" />
         <e p="ProjectFileCorruptedException.cs" t="Include" />
@@ -21,7 +18,6 @@
       <e p="FileWorker.cs" t="Include" />
       <e p="Models" t="Include">
         <e p="Contact.cs" t="Include" />
-        <e p="ContactBackup.cs" t="Include" />
         <e p="PhoneNumber.cs" t="Include" />
         <e p="ProjectStatus.cs" t="Include" />
       </e>
@@ -38,7 +34,7 @@
       <e p="ContactsApp.UnitTests.csproj" t="IncludeRecursive" />
       <e p="ContactTest.cs" t="Include" />
       <e p="obj" t="ExcludeRecursive">
-        <e p="Release" t="Include">
+        <e p="Debug" t="Include">
           <e p="net461" t="Include">
             <e p="ContactsApp.UnitTests.AssemblyInfo.cs" t="Include" />
           </e>
@@ -53,19 +49,19 @@
         <e p="App.config" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="ContactsAppUI.csproj" t="IncludeRecursive" />
+        <e p="Converters" t="Include">
+          <e p="PhoneNumberConverter.cs" t="Include" />
+        </e>
         <e p="Forms" t="Include">
           <e p="AboutForm.cs" t="Include" />
           <e p="AboutForm.Designer.cs" t="Include" />
           <e p="AboutForm.resx" t="Include" />
-          <e p="EditForm.cs" t="Include" />
-          <e p="EditForm.Designer.cs" t="Include" />
-          <e p="EditForm.resx" t="Include" />
+          <e p="ContactForm.cs" t="Include" />
+          <e p="ContactForm.Designer.cs" t="Include" />
+          <e p="ContactForm.resx" t="Include" />
           <e p="MainForm.cs" t="Include" />
           <e p="MainForm.Designer.cs" t="Include" />
           <e p="MainForm.resx" t="Include" />
-        </e>
-        <e p="Models" t="Include">
-          <e p="DialogReturn.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive" />
         <e p="packages.config" t="Include" />

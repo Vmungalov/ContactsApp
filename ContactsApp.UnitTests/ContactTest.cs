@@ -24,7 +24,7 @@ namespace ContactsAppUnitTests
         public void TestSurnameGet_CorrectValue()
         {
             var expected = "Смирнов";
-            _contact.SetSurname(expected);
+            _contact.Surname = expected;
             var actual = _contact.Surname;
             
             Assert.AreEqual(expected, actual, "Геттер Surname возвращает неправильную фамилию.");
@@ -39,7 +39,7 @@ namespace ContactsAppUnitTests
             // 51 символ
             var wrongSurname = "йцукенгшщзхъфывапролджэячсмитьбюыыыыыыыыыыыыыыыыыыы";
             _contact = new Contact();
-            Assert.Throws<ArgumentException>(() => { _contact.SetSurname(wrongSurname); }, 
+            Assert.Throws<ArgumentException>(() => { _contact.Surname = wrongSurname; }, 
                 "Фамилия длиннее 50 символов должна вызвать ArgumentException.");
         }
         
@@ -54,7 +54,7 @@ namespace ContactsAppUnitTests
         public void TestFirstNameGet_CorrectValue()
         {
             var expected = "Алексей";
-            _contact.SetFirstName(expected);
+            _contact.FirstName = expected;
             var actual = _contact.FirstName;
             
             Assert.AreEqual(expected, actual, "Геттер FirstName возвращает неправильную фамилию.");
@@ -69,7 +69,7 @@ namespace ContactsAppUnitTests
             // 51 символ
             var wrongName = @"¯\_(ツ)_/¯ Brfxxccxxmnpcccclllmmnprxvclmnckssqlbb11116";
             _contact = new Contact();
-            Assert.Throws<ArgumentException>(() => { _contact.SetFirstName(wrongName); }, 
+            Assert.Throws<ArgumentException>(() => { _contact.FirstName = wrongName; }, 
                 "Фамилия длиннее 50 символов должна вызвать ArgumentException.");
         }
         
@@ -84,7 +84,7 @@ namespace ContactsAppUnitTests
         public void TestEmailGet_CorrectValue()
         {
             var expected = "v_mungalov@mail.ru";
-            _contact.SetEmail(expected);
+            _contact.Email = expected;
             var actual = _contact.Email;
             
             Assert.AreEqual(expected, actual, "Геттер Email возвращает неправильную фамилию.");
@@ -99,7 +99,7 @@ namespace ContactsAppUnitTests
             // 51 символ
             var wrongEmail = @"¯\_(ツ)_/¯ Brfxxccxxmnpcccclllmmnprxvclmnckssqlbb11116";
             _contact = new Contact();
-            Assert.Throws<ArgumentException>(() => { _contact.SetEmail(wrongEmail); }, 
+            Assert.Throws<ArgumentException>(() => { _contact.Email = wrongEmail; }, 
                 "Фамилия длиннее 50 символов должна вызвать ArgumentException.");
         }
         
@@ -114,7 +114,7 @@ namespace ContactsAppUnitTests
         public void TestVkIdGet_CorrectValue()
         {
             var expected = "v_mungalov";
-            _contact.SetVkId(expected);
+            _contact.IdVk = expected;
             var actual = _contact.IdVk;
             
             Assert.AreEqual(expected, actual, "Геттер IdVk возвращает неправильную фамилию.");
@@ -129,7 +129,7 @@ namespace ContactsAppUnitTests
             // 51 символ
             var wrongVk = "v_mungalov_0000011111222223333344444555556666677777";
             _contact = new Contact();
-            Assert.Throws<ArgumentException>(() => { _contact.SetVkId(wrongVk); }, 
+            Assert.Throws<ArgumentException>(() => { _contact.IdVk = wrongVk; }, 
                 "Фамилия длиннее 50 символов должна вызвать ArgumentException.");
         }
         
@@ -164,7 +164,7 @@ namespace ContactsAppUnitTests
         public void TestBirthdaySet_ArgumentException(string wrong, string message)
         {
             var wrongDate = DateTime.Parse(wrong);
-            Assert.Throws<ArgumentException>(() => { _contact.SetBirthday(wrongDate); });
+            Assert.Throws<ArgumentException>(() => { _contact.Birthday = wrongDate; });
         }
         
         #endregion

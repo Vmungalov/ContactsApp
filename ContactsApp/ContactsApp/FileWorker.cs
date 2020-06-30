@@ -20,11 +20,11 @@ namespace ContactsApp
         /// <returns>Объект класса ProjectStatus</returns>
         /// <exception cref="ProjectFileCorruptedException">Возникает, если файл проекта повреждён</exception>
         /// <exception cref="ProjectReadingException">Возникает при ошибке чтения файла проекта</exception>
-        internal static async Task<ProjectStatus> ReadProjectAsync(FileType type)
+        internal static async Task<ProjectStatus> ReadProjectAsync(string path)
         {
             ProjectStatus projectStatus = new ProjectStatus();
+            projectStatus.Status = LoadingStatus.Failed;
             // Выбор файла
-            string path = Paths.PathsDictionary[type];
             try
             {
                 // Создание папки проекта в случае её отсутствия
@@ -35,7 +35,7 @@ namespace ContactsApp
                 // Десериализация
                 projectStatus.Project = JsonConvert.DeserializeObject<Project>(file) ?? new Project();
                 // Установка статуса в случае успешного чтения
-                projectStatus.Status = type == FileType.Main ? LoadingStatus.Success : LoadingStatus.Backup;
+                projectStatus.Status = LoadingStatus.Success;
             }
             // Ошибка десериализации
             // Возникает, если файл повреждён, неправильно изменён, или если в него был дописан мусор
@@ -67,10 +67,10 @@ namespace ContactsApp
         /// <param name="project">Объект для сериализации</param>
         /// <param name="type">Тип файла (основной, бэкап и т.д.)</param>
         /// <returns></returns>
-        internal static async Task OverwriteFileAsync(object obj, FileType type)
+        internal static async Task OverwriteFileAsync(object obj)
         {
             // Выбор файла
-            string path = Paths.PathsDictionary[type];
+            string path = Paths.MainFilePath;
             try
             {
                 // Создание папки проекта в случае её отсутствия
@@ -89,42 +89,6 @@ namespace ContactsApp
             {
                 throw new ProjectReadingException(ex, "Failed to write contacts file", path);
             }
-        }
-
-        /// <summary>
-        /// Метод "DeleteBackup" удаляет резевный файл контактов
-        /// </summary>
-        internal static void DeleteBackup()
-        {
-            if (BackupExists())
-                File.Delete(Paths.BackupFilePath);
-        }
-        
-        /// <summary>
-        /// Метод "MainFileExists" проверяет наличие основного файла с контактами
-        /// </summary>
-        /// <returns>"Истина", если файл существует, иначе "ложь"</returns>
-        internal static bool MainFileExists()
-        {
-            return File.Exists(Settings.Paths.MainFilePath);
-        }
-
-        /// <summary>
-        /// Метод "BackupExists" проверяет наличие временного файла с контактами
-        /// </summary>
-        /// <returns>"Истина", если файл существует, иначе "ложь"</returns>
-        internal static bool BackupExists()
-        {
-            return File.Exists(Settings.Paths.BackupFilePath);
-        }
-
-        /// <summary>
-        /// Метод "OneContactBackupExists" проверяет наличие временного файла одного контакта (редактируемого)
-        /// </summary>
-        /// <returns>"Истина", если файл существует, иначе "ложь"</returns>
-        internal static bool OneContactBackupExists()
-        {
-            return File.Exists(Paths.OneContactBackupFilePath);
         }
 
         #endregion

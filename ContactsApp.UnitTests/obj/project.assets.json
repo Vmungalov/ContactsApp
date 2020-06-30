@@ -221,37 +221,35 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\developer\\.nuget\\packages\\": {},
+    "C:\\Users\\VADIM\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\developer\\Source\\Repos\\Students\\NTVP\\2020_Mungalov_ContactsApp\\ContactsApp.UnitTests\\ContactsApp.UnitTests.csproj",
+      "projectUniqueName": "Z:\\Projects\\ContactsApp2\\ContactsApp.UnitTests\\ContactsApp.UnitTests.csproj",
       "projectName": "ContactsApp.UnitTests",
-      "projectPath": "C:\\Users\\developer\\Source\\Repos\\Students\\NTVP\\2020_Mungalov_ContactsApp\\ContactsApp.UnitTests\\ContactsApp.UnitTests.csproj",
-      "packagesPath": "C:\\Users\\developer\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\developer\\Source\\Repos\\Students\\NTVP\\2020_Mungalov_ContactsApp\\ContactsApp.UnitTests\\obj\\",
+      "projectPath": "Z:\\Projects\\ContactsApp2\\ContactsApp.UnitTests\\ContactsApp.UnitTests.csproj",
+      "packagesPath": "C:\\Users\\VADIM\\.nuget\\packages\\",
+      "outputPath": "Z:\\Projects\\ContactsApp2\\ContactsApp.UnitTests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\developer\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\VADIM\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net461"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net461": {
           "projectReferences": {
-            "C:\\Users\\developer\\Source\\Repos\\Students\\NTVP\\2020_Mungalov_ContactsApp\\ContactsApp\\ContactsApp\\ContactsApp.csproj": {
-              "projectPath": "C:\\Users\\developer\\Source\\Repos\\Students\\NTVP\\2020_Mungalov_ContactsApp\\ContactsApp\\ContactsApp\\ContactsApp.csproj"
+            "Z:\\Projects\\ContactsApp2\\ContactsApp\\ContactsApp\\ContactsApp.csproj": {
+              "projectPath": "Z:\\Projects\\ContactsApp2\\ContactsApp\\ContactsApp\\ContactsApp.csproj"
             }
           }
         }
@@ -282,7 +280,7 @@
             "version": "[3.12.0, )"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

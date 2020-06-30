@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 using ContactsApp;
-using ContactsAppUI.Models;
 
 namespace ContactsAppUI
 {
@@ -49,8 +48,7 @@ namespace ContactsAppUI
             }
         }
         
-        // TODO: почему открытые поля?
-        public Project Project;
+        private Project Project;
         
         public MainForm(ProjectStatus status)
         {
@@ -59,6 +57,7 @@ namespace ContactsAppUI
             ShownContacts = new BindingList<Contact>(Project.GetSortedContactsList());
             contactsListBox.DataSource = ShownContacts;
             SetBirthdays();
+            UpdateShownContacts();
             Closing += mainForm_Closing;
         }
         
@@ -74,7 +73,7 @@ namespace ContactsAppUI
             surnameTextBox.Text = erase ? "" : ShownContacts[_selectedContactIndex].Surname;
             nameTextBox.Text = erase ? "" : ShownContacts[_selectedContactIndex].FirstName;
             birthdayTextBox.Text = erase ? "" : ShownContacts[_selectedContactIndex].Birthday.ToString("D");
-            phoneTextBox.Text = erase ? "" : ContactsApp.Converters.PhoneNumberConverter.
+            phoneTextBox.Text = erase ? "" : Converters.PhoneNumberConverter.
                 ConvertPhoneToString(ShownContacts[_selectedContactIndex].Number.Number);
             emailTextBox.Text = erase ? "" : ShownContacts[_selectedContactIndex].Email;
             vkTextBox.Text = erase ? "" : ShownContacts[_selectedContactIndex].IdVk;
@@ -144,25 +143,18 @@ namespace ContactsAppUI
         /// </summary>
         /// <param name="contact">Выбранный контакт (null, если создаётся новый)</param>
         /// <returns>Контакт</returns>
-        private DialogReturn<Contact> EditContactOnForm(Contact contact = null)
+        private (Contact, DialogResult) EditContactOnForm(Contact contact = null)
         {
             // Блокирование формы на время присутствия на экране окна редактирования контакта
             Enabled = false;
-            // TODO: зачем форме для редактирования знать о том, какой индекс у редактируемого контакта? Это лишние для второй формы данные, их не нужно передавать.
-            EditForm editForm = new EditForm(contact,_selectedContactIndex);
-            DialogReturn<Contact> result = new DialogReturn<Contact>()
-            {
-                Result = DialogResult.Cancel
-            };
-            using (editForm)
+            ContactForm contactForm = new ContactForm {ContactInfo = contact ?? new Contact()};
+            (Contact, DialogResult) result = (contact, DialogResult.Cancel);
+            using (contactForm)
             {
                 // Показ окна
-                editForm.ShowDialog();
-                if (editForm.DialogResult == DialogResult.OK)
-                {
-                    result.Result = DialogResult.OK;
-                    result.Value = editForm.ContactInfo;
-                }
+                contactForm.ShowDialog();
+                if (contactForm.DialogResult == DialogResult.OK)
+                    result = (contactForm.ContactInfo, DialogResult.OK);
             }
             // Форма вновь активна
             Enabled = true;
@@ -192,8 +184,8 @@ namespace ContactsAppUI
         private void AddContact()
         {
             var result = EditContactOnForm();
-            var contact = result.Value;
-            if (result.Result == DialogResult.OK)
+            var contact = result.Item1;
+            if (result.Item2 == DialogResult.OK)
             {
                 Project.ContactList.Add(contact);
                 UpdateShownContacts();
@@ -209,8 +201,8 @@ namespace ContactsAppUI
             var edited = ShownContacts[shownIndex];
             int mainIndex = GetMainIndex(shownIndex);
             var result = EditContactOnForm(edited);
-            var contact = result.Value;
-            if (result.Result == DialogResult.OK)
+            var contact = result.Item1;
+            if (result.Item2 == DialogResult.OK)
             {
                 Project.ContactList[mainIndex] = contact;
                 UpdateShownContacts();

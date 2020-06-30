@@ -15,7 +15,6 @@ namespace ContactsAppUnitTests
         private Project _project;
         private ProjectStatus _status;
         private string _bak = Paths.MainFilePath + ".testbak";
-        private string _contactBak = Paths.OneContactBackupFilePath + ".testbak";
 
         [SetUp]
         public void InitProjectManager()
@@ -33,11 +32,6 @@ namespace ContactsAppUnitTests
                 File.Create(Paths.MainFilePath);
                 File.Copy(Paths.MainFilePath, _bak);
             }
-            if (File.Exists(Paths.OneContactBackupFilePath))
-            {
-                File.Delete(_contactBak);
-                File.Copy(Paths.OneContactBackupFilePath, _contactBak);
-            }
         }
 
         [TearDown]
@@ -49,13 +43,6 @@ namespace ContactsAppUnitTests
                 File.Delete(Paths.MainFilePath);
                 File.Move(_bak, Paths.MainFilePath );
                 File.Delete(_bak);
-            }
-
-            if (File.Exists(_contactBak))
-            {
-                File.Delete(Paths.OneContactBackupFilePath);
-                File.Move(_contactBak, Paths.OneContactBackupFilePath);
-                File.Delete(_contactBak);
             }
         }
         
@@ -83,39 +70,11 @@ namespace ContactsAppUnitTests
         [Test(Description = "Попытка сохранить и загрузить проект"), Order(3), NonParallelizable]
         public async Task SuccessfulSavingTest()
         {
-            await ProjectManager.SaveProjectAsync(_project, false);
+            await ProjectManager.SaveProjectAsync(_project);
             var loadStatus = await ProjectManager.LoadProjectAsync();
             Assert.AreEqual(_project.ContactList, loadStatus.Project.ContactList, "Проект сохранился с искажениями.");
         }
 
-        [Test(Description = "Попытка записать и прочитать бэкап контакта"), Order(4), NonParallelizable]
-        public async Task SuccessfulBackupTest()
-        {
-            var contact = new Contact()
-            {
-                Birthday = DateTime.Today,
-                Email = "v_mungalov@mail.ru",
-                Number = new PhoneNumber(),
-                Surname = "Surname",
-                FirstName = "First Name",
-                IdVk = "id0"
-            };
-            contact.Number.SetNumber("+71234567890");
-            ContactBackup backup = new ContactBackup()
-            {
-                Contact = contact,
-                Index = 0
-            };
-            await ProjectManager.BackupContactAsync(backup);
-            FileStream stream = File.Open(Paths.OneContactBackupFilePath, FileMode.OpenOrCreate);
-            var bytes = new byte[stream.Length];
-            await stream.ReadAsync(bytes, 0, bytes.Length);
-            string readString = System.Text.Encoding.UTF8.GetString(bytes);
-            stream.Close();
-            var readBackup = JsonConvert.DeserializeObject<ContactBackup>(readString);
-            Assert.True(backup.Equals(readBackup), "Контакт бэкапится с искажениями");
-        }
-        
         [Test(Description = "Попытка пересоздать проект"), Order(5), NonParallelizable]
         public async Task SuccessfulOverCreatingTest()
         {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace ContactsApp.Converters
+namespace ContactsAppUI.Converters
 {
     public static class PhoneNumberConverter
     {
@@ -31,7 +31,7 @@ namespace ContactsApp.Converters
 
         public static string ConvertPhoneToString(long phone)
         {
-            return phone == 0 ? "" : phone.ToString("+0 (000) 000-0000");
+            return phone == 0 ? "+7 (___) ___-____" : phone.ToString("+0 (000) 000-0000");
         }
     }
 }

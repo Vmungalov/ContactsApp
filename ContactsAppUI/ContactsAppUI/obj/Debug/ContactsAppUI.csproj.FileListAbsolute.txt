@@ -7,7 +7,6 @@ Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\bin\Debug\Newtonsoft.Json.d
 Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\bin\Debug\ContactsApp.pdb
 Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\bin\Debug\Newtonsoft.Json.xml
 Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\obj\Debug\ContactsAppUI.AboutForm.resources
-Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\obj\Debug\ContactsAppUI.EditForm.resources
 Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\obj\Debug\ContactsAppUI.MainForm.resources
 Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\obj\Debug\ContactsAppUI.Properties.Resources.resources
 Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\obj\Debug\ContactsAppUI.csproj.GenerateResource.cache
@@ -30,3 +29,6 @@ C:\Users\developer\Source\Repos\Students\NTVP\2020_Mungalov_ContactsApp\Contacts
 C:\Users\developer\Source\Repos\Students\NTVP\2020_Mungalov_ContactsApp\ContactsAppUI\ContactsAppUI\obj\Debug\ContactsAppUI.csproj.CopyComplete
 C:\Users\developer\Source\Repos\Students\NTVP\2020_Mungalov_ContactsApp\ContactsAppUI\ContactsAppUI\obj\Debug\ContactsAppUI.exe
 C:\Users\developer\Source\Repos\Students\NTVP\2020_Mungalov_ContactsApp\ContactsAppUI\ContactsAppUI\obj\Debug\ContactsAppUI.pdb
+Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\bin\Debug\System.ValueTuple.dll
+Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\bin\Debug\System.ValueTuple.xml
+Z:\Projects\ContactsApp2\ContactsAppUI\ContactsAppUI\obj\Debug\ContactsAppUI.ContactForm.resources

@@ -20,9 +20,8 @@ namespace ContactsAppUnitTests
         [Test(Description = "Позитивный тест геттера Number")]
         public void TestNumberGet_CorrectValue()
         {
-            string input = "+7 (123) 456-7890";
             long expected = 71234567890;
-            _number.SetNumber(input);
+            _number.Number = expected;
             var actual = _number.Number;
             Assert.AreEqual(expected,actual,"Геттер Number вернул неправильный номер");
         }
@@ -35,15 +34,16 @@ namespace ContactsAppUnitTests
         [TestCase("0",
             "Должно возникнуть исключение при присвоении номера из одной цифры",
             TestName = "Присвоение слишком короткого номера")]
-        [TestCase("+91234567890",
+        [TestCase("91234567890",
             "Должно возникнуть исключение при присвоении номера с неправильным кодом страны",
             TestName = "Присвоение номера с неправильным кодом страны")]
-        [TestCase("+111111111111111",
+        [TestCase("111111111111111",
             "Должно возникнуть исключение при присвоении слишком длинного номера",
             TestName = "Присвоение слишком длинного номера")]
         public void TestNumberSet_IncorrectNumber(string wrong, string message)
         {
-            Assert.Throws<ArgumentException>(() => { _number.SetNumber(wrong); });
+            long wrongNumber = long.Parse(wrong);
+            Assert.Throws<ArgumentException>(() => { _number.Number = wrongNumber; });
         }
     }
 }

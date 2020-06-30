@@ -2,11 +2,11 @@
 using System.IO;
 using System.Threading.Tasks;
 using ContactsApp.Exceptions;
+using ContactsApp.Settings;
 using Newtonsoft.Json;
 
 namespace ContactsApp
 {
-    // TODO: поудалять всё, что связано с бэкапами
     /// <summary>
     /// Класс "ProjectManager", в котором происходит работа с файлом.
     /// </summary>
@@ -19,18 +19,9 @@ namespace ContactsApp
         public static async Task<ProjectStatus> LoadProjectAsync()
         {
             ProjectStatus status = new ProjectStatus();
-            ProjectStatus backupStatus;
-            // Чтение бэкапа, если он существует
-            if (FileWorker.BackupExists())
-            {
-                backupStatus = await FileWorker.ReadProjectAsync(FileType.Backup);
-                status = backupStatus;
-                FileWorker.DeleteBackup();
-                return status;
-            }
             // Открытие основного файла контактов
             // Если его нет, он будет автоматически создан
-            status = await FileWorker.ReadProjectAsync(FileType.Main);
+            status = await FileWorker.ReadProjectAsync(Paths.MainFilePath);
             return status;
         }
 
@@ -38,19 +29,9 @@ namespace ContactsApp
         /// Метод "SaveProjectAsync" асинхронно записывает список контактов в файл
         /// </summary>
         /// <param name="project">Объект класса Project, содержащий список контактов</param>
-        /// <param name="backup">Булева переменная, значение которой определяет необходимость записать информацию в
-        /// резервный файл. "Истина", если нужно писать бэкап, иначе "ложь"</param>
-        public static async Task SaveProjectAsync(Project project, bool backup)
+        public static async Task SaveProjectAsync(Project project)
         {
-            FileType type = backup ? FileType.Backup : FileType.Main; 
-            await FileWorker.OverwriteFileAsync(project, type);
-            if (FileWorker.BackupExists())
-                FileWorker.DeleteBackup();
-        }
-
-        public static async Task BackupContactAsync(ContactBackup contact)
-        {
-            await FileWorker.OverwriteFileAsync(contact, FileType.OneContactBackup);
+            await FileWorker.OverwriteFileAsync(project);
         }
 
         /// <summary>
@@ -59,7 +40,7 @@ namespace ContactsApp
         /// <returns></returns>
         public static async Task RecreateProjectAsync()
         {
-            await FileWorker.OverwriteFileAsync(new Project(), FileType.Main);
+            await FileWorker.OverwriteFileAsync(new Project());
         }
     }
 }
