@@ -1,4 +1,2 @@
-﻿/ContactsAppUI/ContactsAppUI/bin/Release/InstallScripts/Installers/
-/ContactsAppUI/ContactsAppUI/bin/Release/InstallScripts/Installers/ContactsAppSetup.exe
-
-/ContactsAppUI/.vs/ContactsAppUI/v16/Server/sqlite3/db.lock
+﻿/.idea
+/.vs

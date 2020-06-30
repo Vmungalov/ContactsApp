@@ -30,6 +30,7 @@
       </e>
     </e>
     <e p="Z:\Projects\ContactsApp2\ContactsApp.UnitTests" t="IncludeRecursive">
+      <e p=".gitignore" t="Include" />
       <e p="bin" t="ExcludeRecursive" />
       <e p="ContactsApp.UnitTests.csproj" t="IncludeRecursive" />
       <e p="ContactTest.cs" t="Include" />
@@ -75,6 +76,7 @@
         </e>
         <e p="Resources" t="Include">
           <e p="Alert.png" t="Include" />
+          <e p="ContactsIcon.ico" t="Include" />
           <e p="Info.png" t="Include" />
           <e p="Pencil.png" t="Include" />
           <e p="Plus.png" t="Include" />

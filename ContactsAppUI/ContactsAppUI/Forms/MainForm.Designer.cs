@@ -31,6 +31,8 @@ namespace ContactsAppUI
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources =
+                new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.findLabel = new System.Windows.Forms.Label();
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.buttonDelete = new System.Windows.Forms.Button();
@@ -381,7 +383,7 @@ namespace ContactsAppUI
                                                         System.Windows.Forms.AnchorStyles.Bottom) |
                                                        System.Windows.Forms.AnchorStyles.Left)));
             this.infoPictureBox.BackgroundImage = global::ContactsAppUI.Properties.Resources
-                .pict__information_icon_window_elements___vector_stencils_library;
+                .Info;
             this.infoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.infoPictureBox.Location = new System.Drawing.Point(3, 3);
             this.infoPictureBox.Name = "infoPictureBox";
@@ -511,6 +513,7 @@ namespace ContactsAppUI
             this.Controls.Add(this.rightTablePanelLayout);
             this.Controls.Add(this.panelRight);
             this.Controls.Add(this.menuStrip);
+            this.Icon = ((System.Drawing.Icon) (resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;
             this.MinimumSize = new System.Drawing.Size(669, 594);
             this.Name = "MainForm";

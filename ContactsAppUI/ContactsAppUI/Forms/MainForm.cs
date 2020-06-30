@@ -7,8 +7,6 @@ using ContactsApp;
 
 namespace ContactsAppUI
 {
-    // TODO: нет билд-ивентов или бат-файла в репозитории для запуска автоматической сборки установщика
-    // TODO: добавить иконку программе
     public partial class MainForm : Form
     {
         private BindingList<Contact> _shownContacts;
